@@ -1,0 +1,113 @@
+/* GENERAL FONT STYLES */
+
+header, footer {
+    font-family: Share Tech, Arial;
+}
+
+h1, h2, h3 {
+    font-family: Share Tech, Arial;
+    margin-left: 5%;
+}
+
+body {
+    font-family: Arial;
+    margin-left: 0;
+}
+
+p {
+    margin-left: 5%;
+}
+
+
+
+/* HEADER  */
+.website-header {
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-top-color: lightgreen;
+
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(170, 180, 191);
+
+    padding-left: 8px;
+
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    background-color: rgb(245, 243, 243);
+}
+
+.header-js-icon {
+    width: 4em;
+    /* allows JS image and header title to be next to each other as per:
+    https://www.shecodes.io/athena/1837-how-to-put-2-images-on-one-line-with-css */
+    display: inline;
+    vertical-align: bottom;
+}
+
+.header-title {
+    font-size: 2.5em;
+    color: black;
+    display: inline;
+    margin: 0;
+}
+
+.header-navigation-link {
+    height: 50em;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-decoration: none;
+    color: rgb(99, 107, 116);
+    transition-duration: 0.2s;
+}
+
+.header-navigation-link:hover {
+    font-size: 1.2em;
+    background-color: lightgreen;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 1em;
+    /* allows for a gradual transition for the hover effect which is visually pleasant*/
+    transition-duration: 0.2s;
+    color: black;
+}
+
+/* CONTENT */
+
+/* this ensures the content does not overlap with the fixed header  */
+.page-title {
+    padding-top: 100px;
+}
+
+
+/* footer  */
+
+.website-footer {
+    border-top: 1px;
+    border-top-style: solid;
+    border-color: rgb(170, 180, 191);
+    margin: 0;
+    padding: 0;
+    margin-top:10em;
+    padding: 0.5em;
+}
+
+.tutor-portrait {
+    margin-left: 0.2em;
+    width: 2.5em;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 1em;
+}
+
+.email-link {
+    text-decoration: none;
+    color:  rgb(99, 107, 116);
+}
