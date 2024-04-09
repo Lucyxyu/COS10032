@@ -1,16 +1,16 @@
 /* GENERAL FONT STYLES */
 
 header, footer {
-    font-family: Share Tech, Arial;
+    font-family: "Share Tech", Arial, sans-serif;
 }
 
 h1, h2, h3 {
-    font-family: Share Tech, Arial;
+    font-family: "Share Tech", Arial, sans-serif;
     margin-left: 5%;
 }
 
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     margin-left: 0;
 }
 
@@ -37,6 +37,7 @@ p {
     flex-direction: row;
     justify-content: space-between;
     align-items:center;
+    column-gap: 100px;
     top: 0;
     left: 0;
     right: 0;
@@ -52,24 +53,41 @@ p {
     vertical-align: bottom;
 }
 
+.header-left {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
 .header-title {
     font-size: 2.5em;
     color: black;
     display: inline;
     margin: 0;
+    white-space: nowrap;
+}
+
+/* this removes the header title when the screen is resized */
+@media (max-width: 1000px){
+    .header-title { display: none; }
+
+}
+
+.header-right {
+    line-height: 2;
 }
 
 .header-navigation-link {
-    height: 50em;
     padding-left: 1em;
     padding-right: 1em;
     text-decoration: none;
     color: rgb(99, 107, 116);
     transition-duration: 0.2s;
+    /* this ensures each navigation link stays on the same line and doesn't wrap */
+    white-space: nowrap;
 }
 
 .header-navigation-link:hover {
-    font-size: 1.2em;
     background-color: lightgreen;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
@@ -110,4 +128,11 @@ p {
 .email-link {
     text-decoration: none;
     color:  rgb(99, 107, 116);
+}
+
+/* hover effect placed on div instead of img and text as having the cursor on the edge of the text will cause it to shake */
+.tutor-contact:hover {
+    color:  black;
+    font-weight: bold;
+    text-decoration: underline;
 }

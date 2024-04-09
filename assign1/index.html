@@ -30,7 +30,7 @@
             <a href="index.html" class="header-navigation-link">HOME</a>
 
             <a href="topic.html" class="header-navigation-link">WHAT IS JAVASCRIPT?</a>
- 
+
             <a href="quiz.html" class="header-navigation-link">TEST YOUR KNOWLEDGE</a>
 
             <a href="enhancements.html" class="header-navigation-link">ENHANCEMENTS</a>
@@ -43,7 +43,15 @@
         excepturi magni. </p>
 
     <footer class="website-footer">
-        <a class="email-link" href="mailto:rwijesinghe@swin.edu.au"><img class="tutor-portrait" src="../images/Ravinda-Wijesinghe.png" alt="Ravinda Wijesinghe">Questions? Feedback? Click here to email us.</a>
+
+        <a class="email-link" href="mailto:rwijesinghe@swin.edu.au">
+            <!-- must put a div here to make the transition work properly. refer to style.css notes -->
+            <div class="tutor-contact">
+                <img class="tutor-portrait" src="../images/Ravinda-Wijesinghe.png" alt="Ravinda Wijesinghe">
+                Questions? Feedback? Click here to <span class="email-us-text">email us</span>.
+            </div>
+        </a>
+
     </footer>
 
 </body>
