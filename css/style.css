@@ -1,17 +1,22 @@
-/* GENERAL FONT STYLES */
+/* GENERAL STYLING */
+* {
+    margin: 0;
+}
 
-header, footer {
+header,
+footer {
     font-family: "Share Tech", Arial, sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: "Share Tech", Arial, sans-serif;
     margin-left: 5%;
 }
 
 body {
     font-family: Arial, sans-serif;
-    margin-left: 0;
 }
 
 p {
@@ -36,8 +41,9 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items:center;
-    column-gap: 100px;
+    align-items: center;
+
+
     top: 0;
     left: 0;
     right: 0;
@@ -47,8 +53,6 @@ p {
 
 .header-js-icon {
     width: 4em;
-    /* allows JS image and header title to be next to each other as per:
-    https://www.shecodes.io/athena/1837-how-to-put-2-images-on-one-line-with-css */
     display: inline;
     vertical-align: bottom;
 }
@@ -68,13 +72,20 @@ p {
 }
 
 /* this removes the header title when the screen is resized */
-@media (max-width: 1000px){
-    .header-title { display: none; }
+@media (max-width: 1100px) {
+    .header-title {
+        display: none;
+    }
 
 }
 
 .header-right {
     line-height: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5em;
+    flex-wrap: wrap;
 }
 
 .header-navigation-link {
@@ -89,8 +100,6 @@ p {
 
 .header-navigation-link:hover {
     background-color: lightgreen;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
     border-radius: 1em;
     /* allows for a gradual transition for the hover effect which is visually pleasant*/
     transition-duration: 0.2s;
@@ -101,7 +110,7 @@ p {
 
 /* this ensures the content does not overlap with the fixed header  */
 .page-title {
-    padding-top: 100px;
+    padding-top: 5em;
 }
 
 
@@ -111,28 +120,68 @@ p {
     border-top: 1px;
     border-top-style: solid;
     border-color: rgb(170, 180, 191);
-    margin: 0;
-    padding: 0;
-    margin-top:10em;
+    margin-top: 10em;
     padding: 0.5em;
+    position: fixed;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
-.tutor-portrait {
+.email-icon {
     margin-left: 0.2em;
+    width: 1.5em;
+    vertical-align: middle;
+    /* margin-right: 1em; */
+}
+
+.group-feedback-link {
+    text-decoration: none;
+    color: rgb(99, 107, 116);
+}
+
+.group-feedback-link:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.send-email {
+    text-decoration: none;
+}
+
+.individual-portrait {
     width: 2.5em;
     border-radius: 50%;
     vertical-align: middle;
-    margin-right: 1em;
 }
 
-.email-link {
-    text-decoration: none;
-    color:  rgb(99, 107, 116);
+.email-individual {
+    position: relative;
+    display: inline-block;
 }
 
-/* hover effect placed on div instead of img and text as having the cursor on the edge of the text will cause it to shake */
-.tutor-contact:hover {
-    color:  black;
-    font-weight: bold;
-    text-decoration: underline;
+.email-individual .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    right: 0%; 
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 1s;
+    font-family: Arial, sans-serif;
+    font-size: 0.8em;
+    background-color: rgb(245, 243, 243);
+    padding: 0.5em;
+    border: 1px solid;
+    border-radius: 1em;
+}
+
+.email-individual:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

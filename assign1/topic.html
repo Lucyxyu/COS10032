@@ -26,7 +26,8 @@
             <h1 class="header-title">Introduction to Javascript</h1>
         </div>
 
-        <div class="header-right">
+        <nav class="header-right">
+
             <a href="index.html" class="header-navigation-link">HOME</a>
 
             <a href="topic.html" class="header-navigation-link">WHAT IS JAVASCRIPT?</a>
@@ -34,7 +35,8 @@
             <a href="quiz.html" class="header-navigation-link">TEST YOUR KNOWLEDGE</a>
 
             <a href="enhancements.html" class="header-navigation-link">ENHANCEMENTS</a>
-        </div>
+
+        </nav>
     </header>
 
     <h2 class="page-title">Overview</h2>
@@ -64,14 +66,48 @@
 
     <footer class="website-footer">
 
-        <a class="email-link" href="mailto:rwijesinghe@swin.edu.au">
-            <img class="tutor-portrait" src="../images/Ravinda-Wijesinghe.png" alt="Ravinda Wijesinghe">
-            Questions? Feedback? Click here to email us.
-
+        <!-- this allows the user to send a group email to tutor and students -->
+        <a class="group-feedback-link"
+            href="mailto:rwijesinghe@swin.edu.au,104142281@student.swin.edu.au,104810423@student.swin.edu.au,104934718@student.swin.edu.au">
+            <img class="email-icon" src="../images/email-icon.png" alt="email icon">
+            Questions? Feedback? Email us!
         </a>
 
-    </footer>
 
+        <!-- this section allows user to send individual emails to either tutor or a single student -->
+        <div class="individual-emails">
+
+            <div class="email-individual">
+                <a class="send-email" href="mailto:rwijesinghe@swin.edu.au">
+                    <img class="individual-portrait" src="../images/Ravinda-Wijesinghe.png" alt="tutor portrait">
+                </a>
+                <span class="tooltiptext">Email Ravinda!</span>
+            </div>
+
+            <div class="email-individual">
+                <a class="send-email" href="mailto:104142281@student.swin.edu.au">
+                    <img class="individual-portrait" src="../images/portrait.webp" alt="lucy portrait">
+                </a>
+                <span class="tooltiptext">Email Lucy!</span>
+            </div>
+
+            <div class="email-individual">
+                <a class="send-email" href="mailto:104810423@student.swin.edu.au">
+                    <img class="individual-portrait" src="../images/portrait.webp" alt="Eloise portrait">
+                </a>
+                <span class="tooltiptext">Email Eloise!</span>
+            </div>
+
+            <div class="email-individual">
+                <a class="send-email" href="104934718@student.swin.edu.au">
+                    <img class="individual-portrait" src="../images/portrait.webp" alt="Oshadi portrait">
+                </a>
+                <span class="tooltiptext">Email Oshadi!</span>
+            </div>
+
+        </div>
+
+    </footer>
 </body>
 
 
