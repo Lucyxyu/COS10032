@@ -1,32 +1,32 @@
 /* GENERAL STYLING */
+
 * {
     margin: 0;
-}
-
-header,
-footer {
-    font-family: "Share Tech", Arial, sans-serif;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 h1,
 h2,
 h3 {
     font-family: "Share Tech", Arial, sans-serif;
-    margin-left: 5%;
+    margin-left: 3%;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-image: url(images/background.png);
+    background-attachment: fixed;
 }
 
 p {
-    margin-left: 5%;
+    font-family: Arial, sans-serif;
+    margin-left: 3%;
+    margin-right: 3%;
+    line-height: 2em;
 }
 
-
-
 /* HEADER  */
-.website-header {
+#website-header {
     border-top-width: 5px;
     border-top-style: solid;
     border-top-color: lightgreen;
@@ -43,7 +43,6 @@ p {
     justify-content: space-between;
     align-items: center;
 
-
     top: 0;
     left: 0;
     right: 0;
@@ -51,13 +50,13 @@ p {
     background-color: rgb(245, 243, 243);
 }
 
-.header-js-icon {
+#header-js-icon {
     width: 4em;
     display: inline;
     vertical-align: bottom;
 }
 
-.header-left {
+#header-left {
     overflow: hidden;
     flex-wrap: nowrap;
     flex-shrink: 0;
@@ -79,7 +78,7 @@ p {
 
 }
 
-.header-right {
+#header-right {
     line-height: 2;
     display: flex;
     align-items: center;
@@ -89,6 +88,7 @@ p {
 }
 
 .header-navigation-link {
+    font-family: "Share Tech", Arial, sans-serif;
     padding-left: 1em;
     padding-right: 1em;
     text-decoration: none;
@@ -110,13 +110,40 @@ p {
 
 /* this ensures the content does not overlap with the fixed header  */
 .page-title {
-    padding-top: 5em;
+    margin-top: 5em;
+    margin-bottom: 1.5em;
+    font-size: 2em;
 }
 
+#get-started {
+    font-family: "Share Tech", Arial, sans-serif;
+    background-color: lightgreen;
+    border: 2px solid;
+    padding: 1.5em;
+    font-size: 1.5em;
+    border-radius: 1em;
+    color: black;
+    text-align: center;
+    display: inline-block;
+
+
+    margin: 2em 3%;
+    box-shadow: 5px 5px 10px;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+#get-started:hover{
+    font-family: "Share Tech", Arial, sans-serif;
+    cursor: pointer;
+    opacity: 1;
+    transition-duration: 0.2s;
+}
 
 /* footer  */
 
-.website-footer {
+#website-footer {
+    font-family: "Share Tech", Arial, sans-serif;
     border-top: 1px;
     border-top-style: solid;
     border-color: rgb(170, 180, 191);
@@ -126,27 +153,16 @@ p {
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     left: 0;
     right: 0;
     bottom: 0;
-}
+    gap: 0.5em;
 
-.email-icon {
-    margin-left: 0.2em;
-    width: 1.5em;
-    vertical-align: middle;
-    /* margin-right: 1em; */
-}
+    background-color: rgb(245, 243, 243);
 
-.group-feedback-link {
-    text-decoration: none;
-    color: rgb(99, 107, 116);
-}
-
-.group-feedback-link:hover {
-    color: black;
-    text-decoration: underline;
+    font-style: italic;
 }
 
 .send-email {
@@ -156,7 +172,8 @@ p {
 .individual-portrait {
     width: 2.5em;
     border-radius: 50%;
-    vertical-align: middle;
+    vertical-align: bottom;
+
 }
 
 .email-individual {
