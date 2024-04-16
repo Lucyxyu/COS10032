@@ -4,112 +4,297 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="enhancements page for COS10032 assignment 1 on topic Javascript">
-    <meta name="keywords" content="javascript, enhancements">
+    <meta name="description" content="topic page for COS10032 assignment 1 on topic Javascript">
+    <meta name="keywords" content="javascript, topic, educational">
     <meta name="author" content="Eloise Ridder-Strickland, Oshadi Dewmini Pattiarachchi, Lucy Yu">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Enhancements</title>
+    <title>What is Javascript?</title>
     <!-- embedded code for external google font "Share Tech" -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
 </head>
 
-
-
-
 <body>
-
-    <header class="website-header">
-        <div class="header-left">
-            <a href="index.html"><img class="header-js-icon" src="../images/header-icon.png" alt="javascript icon"></a>
+    <!-- HEADER -->
+    <header id="website-header">
+        <div id="header-left">
+            <a href="index.html"><img id="header-js-icon" src="../images/header-icon.png" alt="javascript icon"></a>
             <h1 class="header-title">Introduction to Javascript</h1>
         </div>
 
-        <nav class="header-right">
+        <nav id="header-right">
+            <ul class="nav-list">
+                <li class="nav-list-item"><a href="index.html" class="header-navigation-link">HOME</a></li>
 
-            <a href="index.html" class="header-navigation-link">HOME</a>
+                <li class="nav-list-item"><a href="topic.html" class="header-navigation-link">WHAT IS JAVASCRIPT?</a>
+                </li>
 
-            <a href="topic.html" class="header-navigation-link">WHAT IS JAVASCRIPT?</a>
+                <li class="nav-list-item"><a href="quiz.html" class="header-navigation-link">TEST YOUR KNOWLEDGE</a>
+                </li>
 
-            <a href="quiz.html" class="header-navigation-link">TEST YOUR KNOWLEDGE</a>
-
-            <a href="enhancements.html" class="header-navigation-link">ENHANCEMENTS</a>
-
+                <li class="nav-list-item"><a href="enhancements.html" class="header-navigation-link">ENHANCEMENTS</a>
+                </li>
+            </ul>
         </nav>
     </header>
+    <!-- PAGE CONTENT -->
+    <h2>Javascript: an Overview</h2>
 
-    <h2 class="page-title">Overview</h2>
-    <p>
-        What is the technology? Its purpose / function? Major points / features ?
-    </p>
+    <!-- section topics -->
+    <section id="origins">
+        <h3>History</h3>
 
-    <h2>Who developed it? When? WHy?</h2>
-    <p>
-        Who developed it? When? Why?
-    </p>
-
-    <h2>oversight</h2>
-    <p>
-        What groups, if any, are responsible for managing it?
-    </p>
-
-    <h2>Looking forward...</h2>
-    <p>
-        Explain its growth or decline. Predict the future for the technology.
-    </p>
-
-    <h2>Related tech</h2>
-    <p>
-        What are related technologies? Compare / contrast with other technologies.
-    </p>
-
-    <footer class="website-footer">
-
-        <!-- this allows the user to send a group email to tutor and students -->
-        <a class="group-feedback-link"
-            href="mailto:rwijesinghe@swin.edu.au,104142281@student.swin.edu.au,104810423@student.swin.edu.au,104934718@student.swin.edu.au">
-            <img class="email-icon" src="../images/email-icon.png" alt="email icon">
-            Questions? Feedback? Email us!
-        </a>
-
-
-        <!-- this section allows user to send individual emails to either tutor or a single student -->
-        <div class="individual-emails">
-
-            <div class="email-individual">
-                <a class="send-email" href="mailto:rwijesinghe@swin.edu.au">
-                    <img class="individual-portrait" src="../images/Ravinda-Wijesinghe.png" alt="tutor portrait">
-                </a>
-                <span class="tooltiptext">Email Ravinda!</span>
-            </div>
-
-            <div class="email-individual">
-                <a class="send-email" href="mailto:104142281@student.swin.edu.au">
-                    <img class="individual-portrait" src="../images/portrait.webp" alt="lucy portrait">
-                </a>
-                <span class="tooltiptext">Email Lucy!</span>
-            </div>
-
-            <div class="email-individual">
-                <a class="send-email" href="mailto:104810423@student.swin.edu.au">
-                    <img class="individual-portrait" src="../images/portrait.webp" alt="Eloise portrait">
-                </a>
-                <span class="tooltiptext">Email Eloise!</span>
-            </div>
-
-            <div class="email-individual">
-                <a class="send-email" href="104934718@student.swin.edu.au">
-                    <img class="individual-portrait" src="../images/portrait.webp" alt="Oshadi portrait">
-                </a>
-                <span class="tooltiptext">Email Oshadi!</span>
-            </div>
-
+        <div id="history-summary">
+            <h4 id="quick-summary-heading">Quick Summary</h4>
+            <dl>
+                <dt>Official name</dt>
+                <dd>ECMAScript</dd>
+                <dt>Date invented</dt>
+                <dd>September 1995</dd>
+                <dt>Inventor</dt>
+                <dd>Brendan Eich</dd>
+            </dl>
         </div>
 
+        <p>
+            The history of JavaScript is fascinating and to understand it we need to rewind the clock back almost 40
+            years.
+        </p>
+
+
+        <figure id="fig1">
+            <img id="fig1-image" src="../images/Brendan_Eich.jpeg" alt="brendan-eich-javascript-inventor">
+            <figcaption>Figure 1 - Brendan Eich, inventor of JavaScript.</figcaption>
+        </figure>
+
+        <ol>
+            <li><span class="date">1989:</span> British Scientist Tim-Berners-Lee invented the world-wide-web (www).
+            </li>
+            <li><span class="date">Early 1990's:</span> The www began gaining popularity and there was fierce
+                competition between the main tech
+                companies to capture market share (Microsoft, Netscape, Sun Microsystems - now Oracle). <em>Websites
+                    were
+                    static and users had little opportunities for interaction.</em></li>
+            <li><span class="date">1995 August:</span> Internet Explorer 1.0 is released by Microsoft</li>
+            <li><span class="date">1995 September:</span> Brendan Eich (Fig 1) creates JavaScript and releases it with
+                Netscape
+                Navigator 2.0 web browser.
+                This profound invention changed the web experience forever. <strong>Javascript allowed websites to
+                    become more interesting, interactive and dynamic.</strong></li>
+            <li><span class="date">1995 November:</span> Microsoft reverse engineers JavaScript and develops JScript
+                which is released on Internet
+                Explorer 2.0.</li>
+            <li><span class="date">1996:</span> JavaScript is taken to the ECMA international standards organization
+                where a committee TC39 is
+                formed to oversee and develop the language. This is hoped to improve cross browser compatibility, assist
+                developers and give users a seamless browsing experience. ECMAScript is the official name of the
+                language. </li>
+            <li><span class="date">1997:</span> ECMA-262 Edition 1 is released.</li>
+            <li><span class="date">Early 2000's:</span> Tech companies are still participating in the Browser Wars to
+                gain market share and
+                co-operation is fragmented when developing a standardised language.</li>
+            <li><span class="date">Late 2000's:</span> JavaScript gains the attention of open source communities and
+                many open source developments
+                are released with JavaScript as the backbone. (jQuery, Prototype, Dojo Toolkid)</li>
+            <li><span class="date">2008:</span> Large tech players hold a conference and agree to co-operate efforts in
+                progressing the language.
+            </li>
+            <li><span class="date">2009:</span> ECMAScript 5 standard is released.</li>
+            <li><span class="date">2023:</span> ECMA-262 Edition 14 is released and is the latest version. <a
+                    href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">Click here</a>
+                to view the ECMA-262 editions</li>
+        </ol>
+
+    </section>
+
+    <section id="function">
+        <h3>What does Javascript do?</h3>
+
+        <figure id="fig2">
+            <img id="fig2-image" src="../images/JS-CSS-HTML.png" alt="3 layer standard web technologies">
+            <figcaption>Figure 2 - standard web technologies.</figcaption>
+        </figure>
+
+        <p>JavaScript, often referred to as JS for short is a <em>scripting or programming language used primarily in
+                the development
+                of Websites and Webpages</em>. Javascript is supported by many frameworks and is extremely versatile
+            whether being used for frontend, backend, web applications and even apps.</p>
+        <p>
+            Unlike HTML which is the structural backbone of web development, CSS which is predominantly styling and
+            layout or design, JavaScript creates <em>dynamically updating and interactive websites</em> (Fig 2). These
+            include
+            multimedia aspects like moving images, video, interactive buttons and sounds. A website without Javascript
+            will quite a dull one indeed!
+        </p>
+        <p>You can look at it like any other
+            high-level (Human readable) machine language, for example, C++.
+
+            It is Layer 3 Of the layer cake of standard web technologies, The first of which being HTML and the second
+            CSS.
+        </p>
+    </section>
+
+    <aside id="Java">
+        JavaScript is often confused with Java however they are different! Java is a high level object oriented
+        programming language used for multiple complex and sophisticated applications such as Android apps, financial
+        software and chatbots.
+        JavaScript is a scripting language primarily used to enhance the interactivity of websites and browser games, as
+        well as connect web applications to servers.
+    </aside>
+
+
+    <section id="current">
+        <h3>Current state of Javascript</h3>
+        <p>
+            The power and versatility of JavaScript in both front and backend development means it is the most popular
+            programming language in the world (Trienpont International). Statistics obtained from various sources show:
+        </p>
+        <ul id="JS-stats">
+            <li> 67.8% Of developers were using it in 2019.</li>
+            <li> It is used to build 95.2% (1.52 Billion) Websites today.</li>
+            <li> According to w3techs, JavaScript is used as client-side programming language by 98.9% of all the
+                websites.</li>
+            <li> For over 7 years in a row, JS has been ranked the most commonly used programming language.</li>
+            <li>According to GitHub's 2018 Octoverse Report; There are more JavaScript code repositories than any other
+                language (with the number steadily rising)</li>
+            <li> Some of the biggest sites we know such as YouTube & Facebook utilise Javascript.</li>
+            <li>Virtually all web browsers support JavaScript</li>
+        </ul>
+
+        <p>
+            Since NetScape handed JavaScript over to the ECMA in 1996, JavaScript has been overseen and developed by
+            committee TC39. The JavaScript specification manual is now developed on GitHub with the help of the
+            community. Users can contribute by submitting requests and reporting issues. These are then reviewed by the
+            committee and decisions are made.
+        </p>
+    </section>
+
+    <section id="future">
+        <h3>Future trends</h3>
+        <p>
+            Since it's inception in 1995 where it revolutionised the web browsing experience, JS has solidified its
+            status as a crucial component of the web browser and other applications. 
+        </p>
+        <p>The many updates to JS means that standalone JavaScript is rarely used these days - its power comes from
+            combining it with multiple frameworks and technologies to run complex applications. Popular
+            frameworks include react.js, angular.js and node.js.
+            Due to it's widespread usage, deeprooted connection to web browsers, expansive range of frameworks and open
+            source community, JS remains versatile and adaptable to changing trends and requirements. 
+        </p>
+        <p>
+            The future of JS looks promising and the language will not die out anytime soon.
+            Now, even with the rise in AI, JavaScript still remains highly relevant as users use the web to communicate
+            with these interfaces - and as the web is dominated by JavaScript it will continue to be used.
+        </p>
+    </section>
+
+    <section id="related-tech">
+        <h3>Related technologies</h3>
+        <p>
+            In website building, the three core development languages are HTML, CSS and Javascript. It is almost
+            impossible to find a website that does not utilise all three of these technologies - they are all inexorably
+            linked.
+
+            The table below compares some key features between the three.
+        </p>
+
+        <h4 id="table">3 Core standard web development programming languages</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th class="table-top-row"> </th>
+                    <th class="table-top-row">HTML</th>
+                    <th class="table-top-row">CSS</th>
+                    <th class="table-top-row">JS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Stands for</th>
+                    <td>Hypertext Markup Language</td>
+                    <td>Cascading Style Sheet</td>
+                    <td>JavaScript</td>
+                </tr>
+                <tr>
+                    <th>Creation Date</th>
+                    <td>1990</td>
+                    <td>1996</td>
+                    <td>1995</td>
+                </tr>
+                <tr>
+                    <th>File extension</th>
+                    <td>.html</td>
+                    <td>.css</td>
+                    <td>.js</td>
+                </tr>
+                <tr>
+                    <th>Function</th>
+                    <td>Defines the <em>structure and content</em> of a website</td>
+                    <td>Styles the <em>appearance and layout</em> of the HTML</td>
+                    <td>Implements <em>interactivity and functionality</em> into a web page</td>
+                </tr>
+                <tr>
+                    <th>Syntax</th>
+                    <td>Tags and attributes</td>
+                    <td>Selectors and declarations</td>
+                    <td>Statements, functions, objects ...</td>
+                </tr>
+                <tr>
+                    <th>Examples</th>
+                    <td>Defines headings, paragraphs, sections, tables</td>
+                    <td>Defines the colours, shapes, backgrounds used</td>
+                    <td>Adds animations, scrolling images, countdown timer, dropdown menus</td>
+                </tr>
+                <tr>
+                    <th>Standalone?</th>
+                    <td>Yes - a basic website can be built with HTML alone (although will look very dull)</td>
+                    <td>No - must be integrated with HTML</td>
+                    <td>No - must be integrated with HTML</td>
+                </tr>
+                <tr>
+                    <th>Usage</th>
+                    <td>Front end</td>
+                    <td>Front end</td>
+                    <td>Full stack</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="website-footer">
+        Questions? Feedback? Contact us!
+        <div class="email-individual">
+            <a class="send-email" href="mailto:rwijesinghe@swin.edu.au">
+                <img class="individual-portrait" src="../images/Ravinda-Wijesinghe.png" alt="tutor portrait">
+            </a>
+            <span class="tooltiptext">Email Ravinda!</span>
+        </div>
+
+        <div class="email-individual">
+            <a class="send-email" href="mailto:104142281@student.swin.edu.au">
+                <img class="individual-portrait" src="../images/portrait.webp" alt="lucy portrait">
+            </a>
+            <span class="tooltiptext">Email Lucy!</span>
+        </div>
+
+        <div class="email-individual">
+            <a class="send-email" href="mailto:104810423@student.swin.edu.au">
+                <img class="individual-portrait" src="../images/portrait.webp" alt="Eloise portrait">
+            </a>
+            <span class="tooltiptext">Email Eloise!</span>
+        </div>
+
+        <div class="email-individual">
+            <a class="send-email" href="104934718@student.swin.edu.au">
+                <img class="individual-portrait" src="../images/portrait.webp" alt="Oshadi portrait">
+            </a>
+            <span class="tooltiptext">Email Oshadi!</span>
+        </div>
     </footer>
 </body>
-
-
-
 </html>
