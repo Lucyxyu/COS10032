@@ -14,6 +14,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+    <!-- css  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -39,6 +45,7 @@
             </ul>
         </nav>
     </header>
+
     <!-- PAGE CONTENT -->
     <h2>Javascript: an Overview</h2>
 
@@ -46,7 +53,7 @@
     <section id="origins">
         <h3>History</h3>
 
-        <div id="history-summary">
+        <div id="history-summary" class="col-sm-auto col-11 offset-1">
             <h4 id="quick-summary-heading">Quick Summary</h4>
             <dl>
                 <dt>Official name</dt>
@@ -63,12 +70,6 @@
             years.
         </p>
 
-
-        <figure id="fig1">
-            <img id="fig1-image" src="../images/Brendan_Eich.jpeg" alt="brendan-eich-javascript-inventor">
-            <figcaption>Figure 1 - Brendan Eich, inventor of JavaScript.</figcaption>
-        </figure>
-
         <ol>
             <li><span class="date">1989:</span> British Scientist Tim-Berners-Lee invented the world-wide-web (www).
             </li>
@@ -83,6 +84,17 @@
                 Navigator 2.0 web browser.
                 This profound invention changed the web experience forever. <strong>Javascript allowed websites to
                     become more interesting, interactive and dynamic.</strong></li>
+
+        </ol>
+
+        <div class="col-md-4 col-12">
+            <figure id="fig1">
+                <img class="img-fluid d-sm-inline d-block" id="fig1-image" src="../images/Brendan_Eich.jpeg"
+                    alt="brendan-eich-javascript-inventor">
+                <figcaption>Figure 1 - Brendan Eich, inventor of JavaScript.</figcaption>
+            </figure>
+        </div>
+        <ol>
             <li><span class="date">1995 November:</span> Microsoft reverse engineers JavaScript and develops JScript
                 which is released on Internet
                 Explorer 2.0.</li>
@@ -111,16 +123,24 @@
 
     <section id="function">
         <h3>What does Javascript do?</h3>
-
-        <figure id="fig2">
-            <img id="fig2-image" src="../images/JS-CSS-HTML.png" alt="3 layer standard web technologies" usemap="weblevels">
-            <figcaption>Figure 2 - standard web technologies.</figcaption>
-            <map name="weblevels">
-                <area target="_blank" alt="3 layer standard web technologies" title="JavaScrip" href="topic2.html" coords="59,126,767,51,1474,124,1471,315,766,404,59,314" shape="poly">
-                <area target="_blank" alt="3 layer standard web technologies" title="CSS" href="topic3.html" coords="64,372,302,346,769,405,1230,347,1473,374,1477,559,769,649,62,561" shape="poly">
-                <area target="_blank" alt="3 layer standard web technologies" title="HTML" href="topic4.html" coords="60,618,302,592,768,650,1233,593,1474,619,1473,812,764,896,61,808" shape="poly">
-            </map>
-        </figure>
+        <div class="container">
+            <div class="col-lg-4 col-8 mx-auto">
+                <figure id="fig2">
+                    <img class="img-fluid" id="fig2-image" src="../images/JS-CSS-HTML.png"
+                        alt="3 layer standard web technologies" usemap="#weblevels">
+                    <figcaption>Figure 2 - standard web technologies.</figcaption>
+                    <map name="weblevels">
+                        <area shape="poly" " coords=" 59,315,59,126,767,53,1473,123,1471,314,766,403"
+                            href="topic2.html">
+                        <!--JAVASCRIPT-->
+                        <area shape="poly" coords="60,373,302,346,766,401,1231,345,1471,373,1474,562,767,650,59,559"
+                            href="topic3.html"> <!---CSS-->
+                        <area shape="poly" coords="60,619,298,593,768,650,1227,592,1473,619,1474,807,767,895,57,810"
+                            href="topic4.html"> <!--HTML-->
+                    </map>
+                </figure>
+            </div>
+        </div>
 
         <p>JavaScript, often referred to as JS for short is a <em>scripting or programming language used primarily in
                 the development
@@ -141,14 +161,17 @@
         </p>
     </section>
 
-    <aside id="Java">
-        JavaScript is often confused with Java however they are different! Java is a high level object oriented
-        programming language used for multiple complex and sophisticated applications such as Android apps, financial
-        software and chatbots.
-        JavaScript is a scripting language primarily used to enhance the interactivity of websites and browser games, as
-        well as connect web applications to servers.
-    </aside>
-
+    <div class="container">
+        <aside class="col-md-4 col-11 offset-1" id="Java">
+            JavaScript is often confused with Java however they are different! Java is a high level object oriented
+            programming language used for multiple complex and sophisticated applications such as Android apps,
+            financial
+            software and chatbots.
+            JavaScript is a scripting language primarily used to enhance the interactivity of websites and browser
+            games, as
+            well as connect web applications to servers.
+        </aside>
+    </div>
 
     <section id="current">
         <h3>Current state of Javascript</h3>
@@ -180,13 +203,13 @@
         <h3>Future trends</h3>
         <p>
             Since it's inception in 1995 where it revolutionised the web browsing experience, JS has solidified its
-            status as a crucial component of the web browser and other applications. 
+            status as a crucial component of the web browser and other applications.
         </p>
         <p>The many updates to JS means that standalone JavaScript is rarely used these days - its power comes from
             combining it with multiple frameworks and technologies to run complex applications. Popular
             frameworks include react.js, angular.js and node.js.
             Due to it's widespread usage, deeprooted connection to web browsers, expansive range of frameworks and open
-            source community, JS remains versatile and adaptable to changing trends and requirements. 
+            source community, JS remains versatile and adaptable to changing trends and requirements.
         </p>
         <p>
             The future of JS looks promising and the language will not die out anytime soon.
@@ -205,68 +228,69 @@
             The table below compares some key features between the three.
         </p>
 
-        <h4 id="table">3 Core standard web development programming languages</h4>
-        <table>
-            <thead>
-                <tr>
-                    <th class="table-top-row"> </th>
-                    <th class="table-top-row">HTML</th>
-                    <th class="table-top-row">CSS</th>
-                    <th class="table-top-row">JS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Stands for</th>
-                    <td>Hypertext Markup Language</td>
-                    <td>Cascading Style Sheet</td>
-                    <td>JavaScript</td>
-                </tr>
-                <tr>
-                    <th>Creation Date</th>
-                    <td>1990</td>
-                    <td>1996</td>
-                    <td>1995</td>
-                </tr>
-                <tr>
-                    <th>File extension</th>
-                    <td>.html</td>
-                    <td>.css</td>
-                    <td>.js</td>
-                </tr>
-                <tr>
-                    <th>Function</th>
-                    <td>Defines the <em>structure and content</em> of a website</td>
-                    <td>Styles the <em>appearance and layout</em> of the HTML</td>
-                    <td>Implements <em>interactivity and functionality</em> into a web page</td>
-                </tr>
-                <tr>
-                    <th>Syntax</th>
-                    <td>Tags and attributes</td>
-                    <td>Selectors and declarations</td>
-                    <td>Statements, functions, objects ...</td>
-                </tr>
-                <tr>
-                    <th>Examples</th>
-                    <td>Defines headings, paragraphs, sections, tables</td>
-                    <td>Defines the colours, shapes, backgrounds used</td>
-                    <td>Adds animations, scrolling images, countdown timer, dropdown menus</td>
-                </tr>
-                <tr>
-                    <th>Standalone?</th>
-                    <td>Yes - a basic website can be built with HTML alone (although will look very dull)</td>
-                    <td>No - must be integrated with HTML</td>
-                    <td>No - must be integrated with HTML</td>
-                </tr>
-                <tr>
-                    <th>Usage</th>
-                    <td>Front end</td>
-                    <td>Front end</td>
-                    <td>Full stack</td>
-                </tr>
-            </tbody>
-        </table>
-
+        <div id="table1">
+            <h4>3 Core standard web development programming languages</h4>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr class="table-success">
+                        <th class="table-top-row"> </th>
+                        <th class="table-top-row">HTML</th>
+                        <th class="table-top-row">CSS</th>
+                        <th class="table-top-row">JS</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <th class="table-success">Stands for</th>
+                        <td>Hypertext Markup Language</td>
+                        <td>Cascading Style Sheet</td>
+                        <td>JavaScript</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Creation Date</th>
+                        <td>1990</td>
+                        <td>1996</td>
+                        <td>1995</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">File extension</th>
+                        <td>.html</td>
+                        <td>.css</td>
+                        <td>.js</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success"> Function</th>
+                        <td>Defines the <em>structure and content</em> of a website</td>
+                        <td>Styles the <em>appearance and layout</em> of the HTML</td>
+                        <td>Implements <em>interactivity and functionality</em> into a web page</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Syntax</th>
+                        <td>Tags and attributes</td>
+                        <td>Selectors and declarations</td>
+                        <td>Statements, functions, objects ...</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Examples</th>
+                        <td>Defines headings, paragraphs, sections, tables</td>
+                        <td>Defines the colours, shapes, backgrounds used</td>
+                        <td>Adds animations, scrolling images, countdown timer, dropdown menus</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Standalone?</th>
+                        <td>Yes - a basic website can be built with HTML alone (although will look very dull)</td>
+                        <td>No - must be integrated with HTML</td>
+                        <td>No - must be integrated with HTML</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Usage</th>
+                        <td>Front end</td>
+                        <td>Front end</td>
+                        <td>Full stack</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
     </section>
@@ -303,4 +327,5 @@
         </div>
     </footer>
 </body>
+
 </html>
