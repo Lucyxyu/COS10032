@@ -194,27 +194,20 @@ dt {
 #fig1 {
     border: 1px solid black;
     float: left;
-    width: 20%;
-    margin: 1em 2em;
+    /* width: 20%; */
+    /* margin: 1em 2em; */
+    margin-right: 2em;
     text-align: center;
 }
 
 
-#fig1-image {
-    width: 100%;
-}
-
 #fig2 {
     border: 1px solid black;
-    width: 40%;
+    /* width: 40%; */
     margin: 1em auto;
     text-align: center;
 }
 
-
-#fig2-image {
-    width: 100%;
-}
 
 ol {
     line-height: 2em;
@@ -255,7 +248,7 @@ aside {
     
 }
 
-#table {
+#table1 {
     text-align: center;
     margin: 1em;
 }
