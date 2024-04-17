@@ -195,7 +195,7 @@ dt {
     border: 1px solid black;
     float: left;
     /* width: 20%; */
-    /* margin: 1em 2em; */
+    margin-left: 2em;
     margin-right: 2em;
     text-align: center;
 }
@@ -230,7 +230,6 @@ ul {
 
 aside {
     width: 30%;
-    display: block;
     float: right;
 
     border: 5px lightgreen outset;
@@ -239,13 +238,11 @@ aside {
     box-shadow: 5px 5px 10px;
     padding: 1em;
     opacity: 0.8;
-    margin: 2em;
     
     line-height: 3em;
     color: rgb(99, 107, 116);
     font-size: 0.9em;
-    font-style: italic;
-    
+    font-style: italic;    
 }
 
 #table1 {
