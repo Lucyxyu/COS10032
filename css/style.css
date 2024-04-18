@@ -202,12 +202,13 @@ dt {
 #figure2{
     text-align: center;
     border: 1px solid black;
-    margin: 1em auto;
-    text-align: center;
+    float: left;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 #fig2 {
-    display: inline-block;
+    margin: 1em auto;
 }
 
 
