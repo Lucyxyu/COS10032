@@ -199,11 +199,15 @@ dt {
     text-align: center;
 }
 
-
-#fig2 {
+#figure2{
+    text-align: center;
     border: 1px solid black;
     margin: 1em auto;
     text-align: center;
+}
+
+#fig2 {
+    display: inline-block;
 }
 
 
