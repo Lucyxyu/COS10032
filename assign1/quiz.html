@@ -15,10 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
 
     <!-- css  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/custom.css">
-
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -47,78 +43,80 @@
     </header>
 
     <!-- PAGE CONTENT -->
-    <body>
-    <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
-        <h1>JavaScript Quiz</h1>
-        <p class="title_box">Are you ready to put your JavaScript skills to the test? <br>Let's get started!</p>
 
-        <fieldset>
-            <legend class="stu_details">User Details:</legend>
-            <label for="fname">First Name:</label>
-            <input type="text" id="fname" name="fname" pattern="[A-Za-z\- ]{1,30}" required><br><br>
+        <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+            <h2>JavaScript Quiz</h2>
+            <p id="title_box">Are you ready to put your JavaScript skills to the test? <br>Let's get started!</p>
 
-            <label for="lname">Last Name:</label>
-            <input type="text" id="lname" name="lname" pattern="[A-Za-z\- ]{1,30}" required><br><br>
+            <fieldset id="student-details-fieldset">
+                <legend class="stu_details">User Details:</legend>
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" pattern="[A-Za-z\- ]{1,30}" required><br><br>
 
-            <label for="StuID">Student ID:</label>
-            <input type="text" id="StuID" name="StuID" placeholder="7 to 9 digit ID" pattern="[0-9]{7,9}" required><br><br>
-        </fieldset>
-        <br>
-        
-        <div class="text_input">
-        <label for="text_input">What is the official name of JavaScript? </label>
-        <input type="text" id="text_input" name="text_input" required><br>
-    </div>
-        
-        <div class="que_2">
-        <p > Who is the inventor of JavaScript?</p>
-        <div class="ans">
-        <input type="radio" id="ans_1" name="q2" value="Guido van Rossum">
-        <label for="ans_1">Guido van Rossum</label><br>
-        <input type="radio" id="ans_2" name="q2" value="Tim Berners-Lee">
-        <label for="ans_2">Tim Berners-Lee</label><br>
-        <input type="radio" id="ans_3" name="q2" value="Brendan Eich">
-        <label for="ans_3">Brendan Eich</label><br>
-        <input type="radio" id="ans_4" name="q2" value="Bill Gates">
-        <label for="ans_4">Bill Gates</label><br>
-    </div>
-    </div>
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" pattern="[A-Za-z\- ]{1,30}" required><br><br>
 
-        
-        <p>What are some notable frameworks built with JavaScript?</p>
-        <input type="checkbox" id="ans_a" name="q3_a" value="Angular.js">
-        <label for="ans_a">Angular.js</label><br>
-        <input type="checkbox" id="ans_b" name="q3_b" value="jQuery">
-        <label for="ans_b">jQuery</label><br>
-        <input type="checkbox" id="ans_c" name="q3_c" value="Django">
-        <label for="ans_c">Django</label><br>
-        <input type="checkbox" id="ans_d" name="q3_d" value="React.js">
-        <label for="ans_d">React.js</label><br>
-        <input type="checkbox" id="ans_e" name="q3_e" value="CakePHP">
-        <label for="ans_e">CakePHP</label><br>
-        <br>
-        
-        <div class="question">
-            <label for="date">When was JavaScript first created?</label>
-            <select id="date" name="creation-date" required>
-                <option value="">Select One</option>
-                <option value="angular">1997</option>
-                <option value="react">1995</option>
-                <option value="vue">1996</option>
-                <option value="svelte">1990</option>
-            </select>
-        </div>
-        <br>
-        
-        <div class="question">
-            <label for="favorite_number">What is the difference between JavaScript and Java??</label><br>
-            <textarea id="favorite_number" name="favorite_number" placeholder="Enter.." rows="4" cols="40" required></textarea><br><br>
-        </div>
+                <label for="StuID">Student ID:</label>
+                <input type="text" id="StuID" name="StuID" placeholder="7 to 9 digit ID" pattern="[0-9]{7,9}"
+                    required><br><br>
+            </fieldset>
+            <br>
 
-        
-        <input type="submit" value="Submit">
-    </form>
-</body>
+            <div class="question">
+                <label for="text_input">1. What is the official name of JavaScript? </label>
+                <input type="text" id="text_input" name="text_input" required>
+            </div>
+
+            <div class="question">
+                <p> 2. Who is the inventor of JavaScript?</p>
+                <div class="ans">
+                    <input type="radio" id="ans_1" name="q2" value="Guido van Rossum">
+                    <label for="ans_1">Guido van Rossum</label><br>
+                    <input type="radio" id="ans_2" name="q2" value="Tim Berners-Lee">
+                    <label for="ans_2">Tim Berners-Lee</label><br>
+                    <input type="radio" id="ans_3" name="q2" value="Brendan Eich">
+                    <label for="ans_3">Brendan Eich</label><br>
+                    <input type="radio" id="ans_4" name="q2" value="Bill Gates">
+                    <label for="ans_4">Bill Gates</label><br>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. What are some notable frameworks built with JavaScript?</p>
+                <input type="checkbox" id="ans_a" name="q3_a" value="Angular.js">
+                <label for="ans_a">Angular.js</label><br>
+                <input type="checkbox" id="ans_b" name="q3_b" value="jQuery">
+                <label for="ans_b">jQuery</label><br>
+                <input type="checkbox" id="ans_c" name="q3_c" value="Django">
+                <label for="ans_c">Django</label><br>
+                <input type="checkbox" id="ans_d" name="q3_d" value="React.js">
+                <label for="ans_d">React.js</label><br>
+                <input type="checkbox" id="ans_e" name="q3_e" value="CakePHP">
+                <label for="ans_e">CakePHP</label><br>
+                <br>
+            </div>
+
+            <div class="question">
+                <label for="date">4. When was JavaScript first created?</label>
+                <select id="date" name="creation-date" required>
+                    <option value="">Select One</option>
+                    <option value="angular">1997</option>
+                    <option value="react">1995</option>
+                    <option value="vue">1996</option>
+                    <option value="svelte">1990</option>
+                </select>
+            </div>
+            <br>
+
+            <div class="question">
+                <label for="JS_java_difference">5. What is the difference between JavaScript and Java??</label><br>
+                <textarea id="JS_java_difference" name="JS_java_difference" placeholder="Enter.." rows="5" cols="60"
+                    required></textarea><br><br>
+            </div>
+
+
+            <input id="submit_button" type="submit" value="Submit">
+        </form>
 
     <!-- FOOTER -->
     <footer id="website-footer">
@@ -152,7 +150,5 @@
         </div>
     </footer>
 </body>
-
-
 
 </html>

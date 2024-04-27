@@ -43,6 +43,11 @@ p {
     line-height: 2em;
 }
 
+/* overrides the bootstrap settings */
+.nav-list {
+    margin-bottom: 0;
+}
+
 /* HEADER  */
 #website-header {
     border-top-width: 5px;
@@ -115,7 +120,6 @@ p {
 
 #website-header li {
     display: inline;
-    /* padding: 0.5em 1em; */
 }
 
 .header-navigation-link {
@@ -274,6 +278,52 @@ td {
 
 .table-top-row {
     font-size: 1.5em;
+}
+/* quiz page */
+#title_box {
+    font-style: italic;
+}
+
+#student-details-fieldset {
+    margin: 3%;
+    padding: 1em;
+}
+
+.stu_details {
+    font: normal 1.5em "Share Tech", Arial, sans-serif;
+}
+
+.question {
+    margin-left: 3%;
+    margin-bottom: 1em;
+}
+
+/* this overrides the general p css formatting with a margin */
+.question p {
+    margin: 0em;
+}
+
+#submit_button {
+    /* font-family: "Share Tech", Arial, sans-serif; */
+    background-color: lightgreen;
+    border: 2px solid;
+    padding: 1em;
+    font-size: 1em;
+    border-radius: 1em;
+    color: black;
+    text-align: center;
+    display: inline-block;
+
+    margin-left: 3%;
+    box-shadow: 5px 5px 10px;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+#submit_button:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition-duration: 0.2s;
 }
 
 /* FOOTER  */
