@@ -16,8 +16,6 @@
     <!-- css  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/custom.css">
-
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -46,7 +44,163 @@
     </header>
 
     <!-- PAGE CONTENT -->
-    
+    <h2>Enhancements</h2>
+    <p>Below is a list of enhancements we have used to extend the website beyond the content learned in the syllabus.
+    </p>
+
+    <h3>Bootstrap</h3>
+    <p>Bootstrap is a very popular open source CSS development framework for websites. Bootstrap has many libraries
+        and we used the CSS one for responsive design. This went beyond the requirements of the assignment as this
+        required a lot of research and trial and error to successfully implement on the page.
+    </p>
+    <p>
+        The Bootstrap techniques used were from two main sources:
+    <ul>
+        <li><a href="https://www.youtube.com/watch?v=Jyvffr3aCp0" target="_blank">This Youtube tutorial</a></li>
+        <li><a href="https://getbootstrap.com/" target="_blank">The Bootstrap official website</a></li>
+    </ul>
+    </p>
+    <p>To add the Bootstrap CSS library,
+        put the following code in the head tag: <br>
+        <code>
+            &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+                  rel="stylesheet"
+                  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+                  crossorigin="anonymous"&gt;
+            </code>
+    </p>
+
+    <ul>
+        <li>The use of Bootstrap is evident on the topic page on the aside element when the page width
+            is sized up and down. <a href="topic.html#java" target="_blank">Click here</a>. The bootstrap class
+            used for this element is: <br>
+
+            <code>&lt;aside class="col-md-4 col-12"&gt;&lt;/aside&gt;</code> <br>
+            This translates to "when the screen is less than medium width, make this element span across the whole page
+            inside of just on the right".
+        </li>
+        <li>Bootstrap can also been seen on the table element on the topic page, where the rows will highlight
+            upon mouse hover. <a href="topic.html#table1" target="_blank">Click here</a>.
+        </li>
+    </ul>
+
+    <h3>Image map</h3>
+
+    <p>An image map has been used to better assist the user in understanding of the topic. <a href="topic.html#figure2"
+            target="_blank">Click here.</a></p>
+    <p>This is an extension from the assignment as it is an innovative addition to the standard img element requirement.
+        Rather than nesting an image in a single anchor tag, different clickable areas of the image link the user to different
+        actions. The clickable areas are defined by co-ordinates on the image.
+        The following code was used:<br>
+        <code>
+            &lt;img id="fig2-image" src="../images/JS-CSS-HTML.png" 
+                 alt="3 layer standard web technologies" 
+                 usemap="#weblevels"&gt;
+
+            <br>
+            &lt;map name="weblevels"&gt;
+            
+            <br>
+                &lt;area shape="poly" 
+                      coords="12,26,154,11,298,26,298,64,156,82,12,63" 
+                      alt="javascript" 
+                      href="topic2.html"&gt;
+
+            <br>
+                &lt;area shape="poly" 
+                      coords="13,75,12,113,156,131,299,113,298,75,249,70,156,83,63,71" 
+                      alt="css" 
+                      href="topic3.html"&gt;
+            
+            <br>
+                &lt;area shape="poly" 
+                      coords="12,125,12,162,155,181,298,163,298,126,247,119,155,131,68,119" 
+                      alt="html" 
+                      href="topic4.html"&gt;
+            &lt;/map&gt;
+            </code>
+    </p>
+
+    <p>The research and resources required to implement the image map include:</p>
+    <ul>
+        <li><a href="https://www.w3schools.com/html/html_images_imagemap.asp" target="_blank">w3schools tutorial</a>
+        </li>
+        <li><a href="https://www.image-map.net/" target="_blank">Image map co-ordinate generator</a></li>
+    </ul>
+
+    <p>It was discovered upon implementation that image maps do not work well with dynamic resizable images therefore
+         the image used is of a fixed size.
+    </p>
+    <h3>Favicon</h3>
+
+    <p>A favicon <img id="favicon" src="../images/icon/favicon.ico" alt="image of website favicon showing JS icon"> is a
+        small icon found next to anything that identifies the website.
+        It is ussually visible in the title bar of a web browser, bookmarks, search history or search bar.
+        Although a favicon is only 16 x 16 pixels in size, we felt it was an important detail to include due to the
+        following:</p>
+    <ul>
+        <li>A visible favicon helps users save time by allowing them to quickly identify the website, thus increasing
+            user engagement</li>
+        <li>Websites without a favicon may be looked at unfavorably by certain browsers for search ranking purposes</li>
+        <li>Some of the most famous websites in the world have highly identifiable Favicons (google, facebook etc)</li>
+        <li>Booksmarks without favicons are not user friendly</li>
+    </ul>
+
+    <p>To create a favicon, go to <a href="https://favicon.io/">favicon.io</a> and use the generator. Once downloaded,
+        add it to the HTML head tag of an element with the following code: <br>
+        <code>&lt;link rel="icon" type="image/x-icon" href="pathhere"&gt;</code>
+    </p>
+
+    <h3>Tooltips</h3>
+
+    <p>Tooltips have been added to the email signature images in the footer of the website upon hover as per below.</p>
+    <p>These enhance the website as they give the user a prompt and a call to action. The tooltips only appear when 
+        necessary, keeping the interface clean and simple.  
+    </p>
+
+    <p>The code required for the tooltips are: <br>
+
+        Adding a span class in the HTML with tool tip text<br>
+        <code>
+            &lt;span class="tooltiptext"&gt;Email Ravinda!&lt;/span&gt;
+        </code>
+        <br>
+
+        Adding CSS properties to only unhide the text upon hover <br>
+        <code>
+            .email-individual .tooltiptext {<br>
+                visibility: hidden;<br>
+                position: absolute;<br>
+                z-index: 1;<br>
+                bottom: 120%;<br>
+                right: 0%;<br>
+                white-space: nowrap;<br>
+                opacity: 0;<br>
+                transition: opacity 1s;<br>
+                font-family: Arial, sans-serif;<br>
+                font-size: 0.8em;<br>
+                background-color: rgb(245, 243, 243);<br>
+                padding: 0.5em;<br>
+                border: 1px solid;<br>
+                border-radius: 1em;<br>
+            }
+            <br>
+            <br>
+            .email-individual:hover .tooltiptext {<br>
+                visibility: visible;<br>
+                opacity: 1;<br>
+            }
+        </code>
+
+
+
+    </p>
+
+    <p>The technique for making these were sourced from the following:</p>
+    <ul>
+        <li><a href="https://www.w3schools.com/css/css_tooltip.asp" target="_blank">w3schools tutorial</a></li>
+        <li><a href="https://forum.freecodecamp.org/t/make-tooltip-appear-above-everything-else/507637" target="_blank">FreeCodeCamp forum post</a></li>
+    </ul>
 
     <!-- FOOTER -->
     <footer id="website-footer">

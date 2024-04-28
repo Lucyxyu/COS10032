@@ -17,6 +17,7 @@ h4 {
     margin-left: 3%;
 }
 
+/* this code is used so the content does not overlap the fixed header */
 h2 {
     margin-top: 3.5em;
     margin-bottom: 1.5em;
@@ -324,6 +325,16 @@ td {
     cursor: pointer;
     opacity: 1;
     transition-duration: 0.2s;
+}
+
+/* enhancements page */
+#favicon {
+    vertical-align: top;
+}
+
+code {
+    background-color: black;
+    color: green;
 }
 
 /* FOOTER  */
