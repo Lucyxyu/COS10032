@@ -11,6 +11,11 @@ body{
 
 p {
     margin: 0;
+    font-family: ui-monospace;
+}
+
+label{
+    font-family: ui-monospace;;
 }
 
 /* Heading 1 styles */
