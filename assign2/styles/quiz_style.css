@@ -1,0 +1,237 @@
+/*
+Author : Oshadi Pattiarachchi
+Student ID : 104810423
+*/
+
+body{
+    font-family: ui-monospace; /* Adjust the font for the whole body */
+    background-image:none;
+    margin: 8px;
+}
+
+p {
+    margin: 0;
+    font-family: ui-monospace;
+}
+
+label{
+    font-family: ui-monospace;;
+}
+
+/* Heading 1 styles */
+h1{
+    text-align: center; 
+    font-family: "Lucida Console", Courier, monospace; /* Set font family for heading */
+    font-style: oblique; /* Italicize heading */
+    font-weight: 200; /* Set font weight for heading */ 
+}
+
+h2{
+    font-weight: 200; /* Set font weight for subheadings */
+    font-family: 'Courier New', Courier, monospace; /* Set font family for subheadings */
+}
+.title_box{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace; /* Set font family for title box */
+    
+}
+.container {
+    display: flex;  /* Use flexbox to create the layout*/
+    justify-content: space-between;  /*  Allocate space among the elements */
+}
+
+/* Student details styles */
+.stu_details {
+    text-align: center;
+    font-size: small; 
+    border: 10px solid #AC8E60; 
+    padding: 10px;
+    width: 50%; 
+    box-sizing: border-box;
+    background-color:#E9DAC4;
+     
+}
+
+/* Image styles */
+.image img {
+    width: 80%;
+    float: right; /* Float images to the right */
+    height: auto; /* Automatically adjust height */
+    max-height: 300px;  /* Set maximum height for images */
+}
+
+/*Styles for text input */
+input[type="text"] {
+    display: block;
+    margin: 0 auto 10px; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease-in-out; /*  Add a transition to create a seamless effect */
+    width: 200px; 
+}
+
+/*Set the hover styles for the text boxes*/
+input[type="text"]:hover {
+    border-color:rgb(145, 247, 142); /* Change border color when hovered over */
+}
+
+.text_input label {
+    display: block; /* Ensure label is on its own line */
+    margin-bottom: 5px; /* Add space below the label */
+}
+
+.text_input input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: inherit;/* Inherit font size */
+    box-sizing: border-box; /* Add border and padding when calculating width*/
+    transition: border-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Text input styles within text_input class */
+.text_input input[type="text"]:hover {
+    border-color: rgb(145, 247, 142); /* Change border color on hover */
+}
+
+/* Define styles for text inputs when focused */
+.text_input input[type="text"]:focus {
+    outline: none; /*  Eliminate the default focus outline */
+    border-color: #6c63ff; /* Change border color on focus */
+}
+
+.image_2 img {
+    max-width: 25%; /* Ensure the image doesn't exceed its container */
+    height: auto;  /* Automatically adjust height */
+    float: left;
+    
+}
+
+/* Answer container styles */
+.ans {
+    display: flex;
+    flex-direction: column; /* Set flex direction to column */
+    width: 70%;
+    gap: 10px; /* Adjust the gap between boxes */
+}
+
+/* Answer box styles */
+.answer {
+    border: 1px solid #ccc; /* Border for each answer box */
+    padding: 10px;
+    border-radius: 5px;
+     
+}
+/* Define the answer box styles when they are hovered over */
+.answer:hover {
+    background-color: rgb(145, 247, 142);
+    
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Checkbox container styles */
+.checkbox-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Add bottom margin to checkbox containers */
+    transition: box-shadow 0.3s ease;
+ 
+}
+
+/* Add styles for checkbox containers when hovered over */
+.checkbox-container:hover {
+    background-color: rgb(145, 247, 142);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 5px; /* Add right margin to checkboxes */
+}
+
+.image_3 img {
+    max-width: 30%; /* Ensure the image doesn't exceed its container */
+    height: auto; 
+    float: right; 
+    
+}
+
+/* Select styles */
+select {
+    padding: 10px;
+    border: 1px solid #f9f0f0;
+    border-radius: 5px;
+    width: 50%;
+    font-size: small;
+    transition: border-color 0.3s ease; 
+}
+
+/* Add styles for select elements when hovered over */
+select:hover {
+    border-color: rgb(145, 247, 142);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) ;
+}
+
+select:focus {
+    outline: none;
+    border-color: #195806;
+    }
+
+    /* Textarea styles */
+textarea {
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    width: 100%; 
+    font-size: inherit; 
+    box-sizing: border-box; 
+    resize: vertical; /* Allow vertical resizing */
+    transition: border-color 0.3s ease; 
+}
+
+/* Add styles for textareas when hovered over */
+textarea:hover {
+    border-color: rgb(145, 247, 142); 
+}
+
+/* Add styles for textareas when focused */
+textarea:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #6c63ff; 
+}
+
+/* Styling for text_input and question classes */
+.text_input,
+.que_2,
+.que_3,
+.que_4,
+.que_5 {
+    margin-bottom: 30px; /* To make a visible space between each question, add margin bottom. */
+}
+ 
+/*Add style for submit button*/
+input[type="submit"] {
+    background-color: #63f167;
+    color: rgb(2, 1, 1);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 0 auto; /* Center the button horizontally */
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 12px;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+        
+        input[type="submit"]:hover {
+            background-color:rgb(48, 121, 48) ;
+            
+        }
+    
+
+

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="topic page for COS10032 assignment 1 on topic Javascript">
+    <meta name="keywords" content="javascript, topic, educational">
+    <meta name="author" content="Eloise Ridder-Strickland, Oshadi Dewmini Pattiarachchi, Lucy Yu">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="images/icon/favicon.ico">
+    <title>What is Javascript?</title>
+    <!-- embedded code for external google font "Share Tech" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+    <!-- css  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <?php
+        include_once("header.inc");
+    ?>
+
+    <!-- PAGE CONTENT -->
+    <h1>Javascript: an Overview</h1>
+
+    <!-- section topics -->
+    <section id="origins">
+        <h2>History</h2>
+
+        <div class="container-fluid">
+            <div id="history-summary" class="col-sm-auto col-11">
+                <h4 id="quick-summary-heading">Quick Summary</h4>
+                <dl>
+                    <dt>Official name</dt>
+                    <dd>ECMAScript</dd>
+                    <dt>Date invented</dt>
+                    <dd>September 1995</dd>
+                    <dt>Inventor</dt>
+                    <dd>Brendan Eich</dd>
+                </dl>
+            </div>
+        </div>
+        <p>
+            The history of JavaScript is fascinating and to understand it we need to rewind the clock back almost 40
+            years.
+        </p>
+
+        <ol>
+            <li><span class="date">1989:</span> British Scientist Tim-Berners-Lee invented the world-wide-web (www).
+            </li>
+            <li><span class="date">Early 1990's:</span> The www began gaining popularity and there was fierce
+                competition between the main tech
+                companies to capture market share (Microsoft, Netscape, Sun Microsystems - now Oracle). <em>Websites
+                    were
+                    static and users had little opportunities for interaction.</em></li>
+            <li><span class="date">1995 August:</span> Internet Explorer 1.0 is released by Microsoft</li>
+            <li><span class="date">1995 September:</span> Brendan Eich (Fig 1) creates JavaScript and releases it with
+                Netscape
+                Navigator 2.0 web browser.
+                This profound invention changed the web experience forever. <strong>Javascript allowed websites to
+                    become more interesting, interactive and dynamic.</strong></li>
+
+        </ol>
+
+        <div class="row">
+            <div class="col-md-4">
+                <figure class="mb-4" id="fig1">
+                    <img class="img-fluid d-sm-inline d-block" id="fig1-image" src="images/Brendan_Eich.jpeg"
+                        alt="brendan-eich-javascript-inventor">
+                    <figcaption>Figure 1 - Brendan Eich, inventor of JavaScript.</figcaption>
+                </figure>
+            </div>
+            <div class="col-md-8">
+                <ol>
+                    <li><span class="date">1995 November:</span> Microsoft reverse engineers JavaScript and develops
+                        JScript
+                        which is released on Internet
+                        Explorer 2.0.</li>
+                    <li><span class="date">1996:</span> JavaScript is taken to the ECMA international standards
+                        organization
+                        where a committee TC39 is
+                        formed to oversee and develop the language. This is hoped to improve cross browser
+                        compatibility, assist
+                        developers and give users a seamless browsing experience. ECMAScript is the official name of the
+                        language. </li>
+                    <li><span class="date">1997:</span> ECMA-262 Edition 1 is released.</li>
+                    <li><span class="date">Early 2000's:</span> Tech companies are still participating in the Browser
+                        Wars to
+                        gain market share and
+                        co-operation is fragmented when developing a standardised language.</li>
+                    <li><span class="date">Late 2000's:</span> JavaScript gains the attention of open source communities
+                        and
+                        many open source developments
+                        are released with JavaScript as the backbone. (jQuery, Prototype, Dojo Toolkid)</li>
+                    <li><span class="date">2008:</span> Large tech players hold a conference and agree to co-operate
+                        efforts in
+                        progressing the language.
+                    </li>
+                    <li><span class="date">2009:</span> ECMAScript 5 standard is released.</li>
+                    <li><span class="date">2023:</span> ECMA-262 Edition 14 is released and is the latest version. <a
+                            href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">Click
+                            here</a>
+                        to view the ECMA-262 editions</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="function">
+        <h2>What does Javascript do?</h2>
+
+        <div id="figure2">
+            <figure class="fig2">
+                <img id="fig2-image" src="images/JS-CSS-HTML.png" alt="3 layer standard web technologies"
+                    usemap="#weblevels">
+
+                <map name="weblevels">
+                    <!--JAVASCRIPT-->
+                    <area shape="poly" coords="12,26,154,11,298,26,298,64,156,82,12,63" alt="javascript"
+                        href="topic2.html">
+                    <!--CSS-->
+                    <area shape="poly" coords="13,75,12,113,156,131,299,113,298,75,249,70,156,83,63,71" alt="css"
+                        href="topic3.html">
+                    <!--HTML-->
+                    <area shape="poly" coords="12,125,12,162,155,181,298,163,298,126,247,119,155,131,68,119" alt=""
+                        href="topic4.html">
+                </map>
+
+                <figcaption>Figure 2 - standard web technologies.</figcaption>
+            </figure>
+        </div>
+
+        <p>JavaScript, often referred to as JS for short is a <em>scripting or programming language used primarily in
+                the development
+                of Websites and Webpages</em>. Javascript is supported by many frameworks and is extremely versatile
+            whether being used for frontend, backend, web applications and even apps.</p>
+        <p>
+            Unlike HTML which is the structural backbone of web development, CSS which is predominantly styling and
+            layout or design, JavaScript creates <em>dynamically updating and interactive websites</em> (Fig 2). These
+            include
+            multimedia aspects like moving images, video, interactive buttons and sounds. A website without Javascript
+            will quite a dull one indeed!
+        </p>
+        <p>You can look at it like any other
+            high-level (Human readable) machine language, for example, C++.
+
+            It is Layer 3 Of the layer cake of standard web technologies, The first of which being HTML and the second
+            CSS.
+        </p>
+    </section>
+
+
+    <div class="container-fluid"  id="java">
+        <aside class="col-md-4 col-12">
+            JavaScript is often confused with Java however they are different! Java is a high level object oriented
+            programming language used for multiple complex and sophisticated applications such as Android apps,
+            financial
+            software and chatbots.
+            JavaScript is a scripting language primarily used to enhance the interactivity of websites and browser
+            games, as
+            well as connect web applications to servers.
+        </aside>
+    </div>
+
+
+    <section id="current">
+        <h2>Current state of Javascript</h2>
+        <p>
+            The power and versatility of JavaScript in both front and backend development means it is the most popular
+            programming language in the world (Trienpont International). Statistics obtained from various sources show:
+        </p>
+        <ul id="JS-stats">
+            <li> 67.8% Of developers were using it in 2019.</li>
+            <li> It is used to build 95.2% (1.52 Billion) Websites today.</li>
+            <li> According to w3techs, JavaScript is used as client-side programming language by 98.9% of all the
+                websites.</li>
+            <li> For over 7 years in a row, JS has been ranked the most commonly used programming language.</li>
+            <li>According to GitHub's 2018 Octoverse Report; There are more JavaScript code repositories than any other
+                language (with the number steadily rising)</li>
+            <li> Some of the biggest sites we know such as YouTube & Facebook utilise Javascript.</li>
+            <li>Virtually all web browsers support JavaScript</li>
+        </ul>
+
+        <p>
+            Since NetScape handed JavaScript over to the ECMA in 1996, JavaScript has been overseen and developed by
+            committee TC39. The JavaScript specification manual is now developed on GitHub with the help of the
+            community. Users can contribute by submitting requests and reporting issues. These are then reviewed by the
+            committee and decisions are made.
+        </p>
+    </section>
+
+    <section id="future">
+        <h2>Future trends</h2>
+        <p>
+            Since it's inception in 1995 where it revolutionised the web browsing experience, JS has solidified its
+            status as a crucial component of the web browser and other applications.
+        </p>
+        <p>The many updates to JS means that standalone JavaScript is rarely used these days - its power comes from
+            combining it with multiple frameworks and technologies to run complex applications. Popular
+            frameworks include react.js, angular.js and node.js.
+            Due to it's widespread usage, deeprooted connection to web browsers, expansive range of frameworks and open
+            source community, JS remains versatile and adaptable to changing trends and requirements.
+        </p>
+        <p>
+            The future of JS looks promising and the language will not die out anytime soon.
+            Now, even with the rise in AI, JavaScript still remains highly relevant as users use the web to communicate
+            with these interfaces - and as the web is dominated by JavaScript it will continue to be used.
+        </p>
+    </section>
+
+    <section id="related-tech">
+        <h2>Related technologies</h2>
+        <p>
+            In website building, the three core development languages are HTML, CSS and Javascript. It is almost
+            impossible to find a website that does not utilise all three of these technologies - they are all inexorably
+            linked.
+
+            The table below compares some key features between the three.
+        </p>
+
+        <div id="table1">
+            <h4>3 Core standard web development programming languages</h4>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr class="table-success">
+                        <th class="table-top-row"> </th>
+                        <th class="table-top-row">HTML</th>
+                        <th class="table-top-row">CSS</th>
+                        <th class="table-top-row">JS</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <th class="table-success">Stands for</th>
+                        <td>Hypertext Markup Language</td>
+                        <td>Cascading Style Sheet</td>
+                        <td>JavaScript</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Creation Date</th>
+                        <td>1990</td>
+                        <td>1996</td>
+                        <td>1995</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">File extension</th>
+                        <td>.html</td>
+                        <td>.css</td>
+                        <td>.js</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success"> Function</th>
+                        <td>Defines the <em>structure and content</em> of a website</td>
+                        <td>Styles the <em>appearance and layout</em> of the HTML</td>
+                        <td>Implements <em>interactivity and functionality</em> into a web page</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Syntax</th>
+                        <td>Tags and attributes</td>
+                        <td>Selectors and declarations</td>
+                        <td>Statements, functions, objects ...</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Examples</th>
+                        <td>Defines headings, paragraphs, sections, tables</td>
+                        <td>Defines the colours, shapes, backgrounds used</td>
+                        <td>Adds animations, scrolling images, countdown timer, dropdown menus</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Standalone?</th>
+                        <td>Yes - a basic website can be built with HTML alone (although will look very dull)</td>
+                        <td>No - must be integrated with HTML</td>
+                        <td>No - must be integrated with HTML</td>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Usage</th>
+                        <td>Front end</td>
+                        <td>Front end</td>
+                        <td>Full stack</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </section>
+
+    <!-- FOOTER -->
+    <?php
+        include_once("footer.inc");
+    ?>
+</body>
+
+</html>

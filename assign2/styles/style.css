@@ -1,0 +1,355 @@
+/* GENERAL STYLING */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Share Tech", Arial, sans-serif;
+    margin-left: 3%;
+}
+
+/* this code is used so the content does not overlap the fixed header */
+h1 {
+    margin-top: 3.5em;
+    margin-bottom: 1.5em;
+    font-size: 2.2em;
+}
+
+h2 {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    font-size: 1.8em;
+}
+
+body {
+    background-image: url("images/background.png");
+    background-attachment: fixed;
+    padding-bottom: 10em;
+    background-size: 100%;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    margin-left: 3%;
+    margin-right: 3%;
+    line-height: 2em;
+}
+
+/* overrides the bootstrap settings */
+.nav-list {
+    margin-bottom: 0;
+}
+
+/* HEADER  */
+#website-header {
+    border-top-width: 5px;
+    border-top-style: solid;
+    border-top-color: lightgreen;
+
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(170, 180, 191);
+
+    padding-left: 8px;
+
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    background-color: rgb(245, 243, 243);
+
+    /* z -index highest so no elements on the webpage stack on top of this when scrolling */
+    z-index: 7;
+}
+
+
+#header-left {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-shrink: 0;    
+}
+
+header p {
+    font: normal 2.5em "Share Tech", Arial, sans-serif;
+}
+
+#header-js-icon {
+    width: 4em;
+    display: inline;
+    vertical-align: bottom;
+}
+
+.header-title {
+    /* font-size: 2.5em; */
+    color: black;
+    display: inline;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* this removes the header title when the screen is resized */
+@media (max-width: 1100px) {
+    .header-title {
+        display: none;
+    }
+}
+
+#header-right {
+    flex: 1;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 1em;
+    list-style: none;
+}
+
+#website-header li {
+    display: inline;
+}
+
+.header-navigation-link {
+    font-family: "Share Tech", Arial, sans-serif;
+    text-decoration: none;
+    color: rgb(99, 107, 116);
+    transition-duration: 0.2s;
+    /* this ensures each navigation link stays on the same line and doesn't wrap */
+    white-space: nowrap;
+    padding: 0.5em 1em;
+}
+
+.header-navigation-link:hover {
+    background-color: lightgreen;
+    border-radius: 1em;
+    /* allows for a gradual transition for the hover effect which is visually pleasant*/
+    transition-duration: 0.2s;
+    color: black;
+}
+
+/* CONTENT */
+
+/* index page  */
+#get-started {
+    font-family: "Share Tech", Arial, sans-serif;
+    background-color: lightgreen;
+    border: 2px solid;
+    padding: 1.5em;
+    font-size: 1.5em;
+    border-radius: 1em;
+    color: black;
+    text-align: center;
+    display: inline-block;
+
+
+    margin: 2em 3%;
+    box-shadow: 5px 5px 10px;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+#get-started:hover {
+    font-family: "Share Tech", Arial, sans-serif;
+    cursor: pointer;
+    opacity: 1;
+    transition-duration: 0.2s;
+}
+
+/* topic page */
+#history-summary {
+    border: 2px solid rgb(99, 107, 116);;
+    text-align: left;
+    float: right;
+    margin: 0 3%;
+    padding: 1em;
+    background-color: white;
+    opacity: 0.8;
+
+}
+
+#quick-summary-heading {
+    font-size: 1.2em;
+    padding-bottom: 0.5em;
+}
+
+dl {
+    line-height: 1.5em;
+
+}
+dt {
+    font-weight: bold;
+}
+
+
+
+#fig1 {
+    border: 1px solid black;
+    float: left;
+    margin-left: 2em;
+    margin-right: 2em;
+    text-align: center;
+}
+
+#figure2{
+    text-align: center;
+    border: 1px solid black;
+    float: left;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+#fig2 {
+    margin: 1em auto;
+}
+
+
+ol {
+    line-height: 2em;
+    margin-left: 3%;
+    margin-right: 3%;
+    list-style-type: disc;
+}
+
+ul {
+    line-height: 2em;
+    margin-left: 5%;
+    margin-right: 3%;
+    list-style-type: disc;
+
+}
+
+.date {
+    font-weight: bold;
+}
+
+aside {
+    width: 30%;
+    float: right;
+
+    border: 5px lightgreen outset;
+    border-radius: 0.5em;
+    background-color: white;
+    box-shadow: 5px 5px 10px;
+    padding: 1em;
+    opacity: 0.8;
+    
+    line-height: 3em;
+    color: rgb(99, 107, 116);
+    font-size: 0.9em;
+    font-style: italic;    
+}
+
+#table1 {
+    text-align: center;
+    margin: 1em;
+}
+
+table {
+    border: 1px solid;
+    width: 80%;
+    margin-left: 20%;
+    margin: 1em auto;
+}
+
+th {
+    background-color: white;
+    width: 25%;
+    padding: 0.5em;
+}
+
+td {
+    background-color: rgb(245, 243, 243);
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.table-top-row {
+    font-size: 1.5em;
+}
+
+/* enhancements page */
+#favicon {
+    vertical-align: top;
+}
+
+code {
+    background-color: black;
+    color: white;
+}
+
+/* FOOTER  */
+
+#website-footer {
+    font-family: "Share Tech", Arial, sans-serif;
+    border-top: 1px;
+    border-top-style: solid;
+    border-color: rgb(170, 180, 191);
+    margin-top: 10em;
+    padding: 0.5em;
+    position: fixed;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    gap: 0.5em;
+
+    background-color: rgb(245, 243, 243);
+
+    font-style: italic;
+}
+
+.send-email {
+    text-decoration: none;
+}
+
+.individual-portrait {
+    width: 2.5em;
+    border-radius: 50%;
+    vertical-align: bottom;
+
+}
+
+.email-individual {
+    position: relative;
+    display: inline-block;
+}
+
+.email-individual .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    right: 0%;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 1s;
+    font-family: Arial, sans-serif;
+    font-size: 0.8em;
+    background-color: rgb(245, 243, 243);
+    padding: 0.5em;
+    border: 1px solid;
+    border-radius: 1em;
+}
+
+.email-individual:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
