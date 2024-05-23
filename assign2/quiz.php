@@ -28,7 +28,7 @@
     <!-- PAGE CONTENT -->
 
     <!-- JavaScript Quiz Form -->
-    <form action="http://mercury.swin.edu.au/it000000/formtest.php" method="post">
+    <form action="markquiz.php" method="post">
         <!-- Title section -->
         <div class="title">
             <h1>JavaScript Quiz</h1>
