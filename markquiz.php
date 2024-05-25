@@ -1,12 +1,4 @@
-<!-- This function is used to sanitise the data -->
-<?php
-function sanitise_input ($data) {
-    $data = trim($data);
-    $data = stripslashes ($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-?>
+
 
 <!DOCTYPE html>
 
@@ -36,45 +28,27 @@ function sanitise_input ($data) {
 <!-- BODY -->
     <?php
 
-    echo "<h1>Quiz submitted!</h1>";
+    //use this script to validate input
+    require_once("validatequiz.php");
 
-    //FNAME FIELD
-    //check if the form was submitted properly or if user just navigated to this page via url
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset ($_POST["fname"]) && !empty($_POST["fname"])) {
-            //assign fname variable
-            $fname = $_POST["fname"];
-            $fname = sanitise_input($fname);
-        } else {
-            //prompt user to enter their first name
-            echo "<p>Error: Please enter first name in the <a href=\"quiz.php\">quiz</a></p>";
-            exit();
-        }
-    //redirect back to the quiz if the form was not submitted properly
+    //connect to database *******MAKE SURE TO ADD YOUR OWN settings.php file**********
+    require_once("settings.php");
+    $conn = mysqli_connect (
+        $host,
+        $user,
+        $pwd,
+        $sql_db
+    );
+
+    if (!$conn) {
+        //error message
+        echo "<h1>Database Error!</h1>
+        <p>Database connection failure. Please contact us.</p>";
     } else {
-            header("location: quiz.php");
-    }
+    echo "<h1>Your Quiz results</h1>
+            <p>everything pass </p>";
 
-    //LNAME FIELD
-    if (isset ($_POST["lname"]) && !empty($_POST["lname"])) {
-        $lname = $_POST["lname"];
-        $lname = sanitise_input($lname);
     }
-    else {
-        echo "<p>Error: Enter last name data in the <a href=\"quiz.php\">quiz</a></p>";
-        exit();
-    }    
-
-    //STUDENT ID FIELD
-    if (isset ($_POST["StuID"]) && !empty($_POST["StuID"])) {
-        $StuID = $_POST["StuID"];
-        $StuID = sanitise_input($StuID);
-    }
-    else {
-        echo "<p>Error: Enter student ID in the <a href=\"quiz.php\">quiz</a></p>";
-        exit();
-    }    
-
     ?>
 
     <!-- FOOTER -->

@@ -28,7 +28,7 @@
     <!-- PAGE CONTENT -->
 
     <!-- JavaScript Quiz Form -->
-    <form action="markquiz.php" method="post">
+    <form action="markquiz.php" method="post" novalidate="novalidate">
         <!-- Title section -->
         <div class="title">
             <h1>JavaScript Quiz</h1>
