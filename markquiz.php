@@ -28,8 +28,8 @@
 <!-- BODY -->
     <?php
 
-    //use this script to validate input
-    require_once("validatequiz.php");
+    //use this script to validate input fields have all been completed
+    require_once("validatequizinputs.php");
 
     //connect to database *******MAKE SURE TO ADD YOUR OWN settings.php file**********
     require_once("settings.php");
@@ -45,8 +45,17 @@
         echo "<h1>Database Error!</h1>
         <p>Database connection failure. Please contact us.</p>";
     } else {
-    echo "<h1>Your Quiz results</h1>
-            <p>everything pass </p>";
+    echo "<h1>Your Quiz results</h1>";
+
+    //create tables
+    require_once("mysqlitables.php");
+
+
+
+
+
+
+echo "<p>everything pass </p>";
 
     }
     ?>
