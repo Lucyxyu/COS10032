@@ -144,7 +144,7 @@ header p {
 /* CONTENT */
 
 /* index page  */
-#get-started {
+.get-started {
     font-family: "Share Tech", Arial, sans-serif;
     background-color: lightgreen;
     border: 2px solid;

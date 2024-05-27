@@ -31,7 +31,7 @@
         <em>1.52 billion websites</em> today. If
         you would like to know more, please feel free to explore, browse and don't forget to take the quiz!</p>
 
-        <a id="get-started" href="topic.php">GET STARTED!</a>
+        <a class="get-started" href="topic.php">GET STARTED!</a>
 
         <p>To hear our explanation about designing this website, please <a href="https://www.youtube.com/watch?v=9EUzjRQNyTI" target="_blank">click here</a></p>
     </article>
