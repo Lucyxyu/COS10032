@@ -162,7 +162,7 @@ header p {
     opacity: 0.8;
 }
 
-#get-started:hover {
+.get-started:hover {
     font-family: "Share Tech", Arial, sans-serif;
     cursor: pointer;
     opacity: 1;
