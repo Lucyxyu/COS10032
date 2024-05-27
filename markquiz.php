@@ -45,10 +45,13 @@
         echo "<h1>Database Error!</h1>
         <p>Database connection failure. Please contact us.</p>";
     } else {
+
+        //create tables
+        require_once("mysqlitables.php");
+
     echo "<h1>Your Quiz results</h1>";
 
-    //create tables
-    require_once("mysqlitables.php");
+
 
 
 
