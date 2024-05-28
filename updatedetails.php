@@ -21,6 +21,7 @@ if (!$conn) {
     //if database connection fails display error message
     echo "<h1>Database Error!</h1>
     <p>Database connection failure. Please contact us.</p>";
+    include_once("footer.inc");
     exit();
 } else {
     //database connection successful
@@ -42,9 +43,13 @@ if (!$conn) {
     if ($result == false){
         echo "<h1>Database Error!</h1>
         <p>Error: Unable to update database. Please try quiz submission again at <a href=\"quiz.php\">quiz</a></p>";
+        include_once("footer.inc");
+        exit();
     } else {
         echo "<h1>Details updated. </h1>
         <p>Please complete <a href=\"quiz.php\">quiz</a> again with the correct details.</p>";
+        include_once("footer.inc");
+        exit();
     }
 
     //close the database connection

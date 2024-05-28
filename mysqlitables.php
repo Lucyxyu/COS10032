@@ -19,12 +19,12 @@
     } else {
         //insert values into STUDENT table
 
+        //If the Student ID already exists then ignore the insert
         $query = "  INSERT IGNORE INTO student VALUES (
             '$StuID',
             '$fname',
             '$lname'
             )";
-
         $result = mysqli_query ($conn, $query);
 
         //check if value was inserted successfuly
@@ -32,8 +32,10 @@
             //error message if boolean returns false
             echo "<h1>Database Error!</h1>
             <p>Database insertion failure. Please contact us.</p>";
+            include_once("footer.inc");
+            exit();
         } else {
-            //check if student number already exists
+            //check if student number already exists (if affected rows is 1, means the insert was successful, if not then the student ID already exists)
             if (mysqli_affected_rows($conn) != 1){
                 //if student number already exists, check if the name matches, if not prompt the user
                 //query first and last name
@@ -42,11 +44,12 @@
                     WHERE studentID = '$StuID' ";
                 $nameresult = mysqli_query ($conn, $query);
                 
+                //save the names into $row
                 $row = mysqli_fetch_assoc($nameresult);
 
                 //match first and last name to what the user has input
                 if (!(($row['fname'] == $fname) && ($row['lname'] == $lname))){
-                    //if stuID and name do not match prompt user to check. Pass the variables in hidden input types if they need to be updated
+                    //if stuID and name do not match prompt user to check. Form has been used to pass the variables in hidden input types to updatedetails.php file
                     echo "<h1>Verification required</h1>
 
                     <form action='updatedetails.php' method='post'>
@@ -66,10 +69,51 @@
                     <a class='get-started' href='quiz.php'>Details are incorrect, go back and try again</a>
 
                     <p>*** Please note you will need to contact an administrator if your student ID has been incorrectly used for a previous quiz attempt</p>";
+                    include_once("footer.inc");
                     exit();
                 }
             } 
         }
+    } 
+
+    //ATTEMPT TABLE
+    //check if ATTEMPT table exists and create it if it doesn't
+    $query = "  CREATE TABLE IF NOT EXISTS attempt (
+        attemptID INT AUTO_INCREMENT PRIMARY KEY,
+        studentID VARCHAR(10),
+        attemptDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        attemptNumber INT(1),
+        attemptScore INT(1),
+        FOREIGN KEY (studentID) REFERENCES student(studentID)
+        )";
+    //store the result 
+    $result = mysqli_query ($conn, $query);
+
+    //check if table exists or was created successfully
+    if (!$result){
+        echo "<h1>Database Error!</h1>
+        <p>Database table creation failure. Please contact us.</p>";
+        include_once("footer.inc");
+        exit();
+    } else {
+        //create constant to set max number of quiz attemps
+        define ("MAX_QUIZ_ATTEMPTS", 2);
+
+        //first check table to see if maximum number of quiz attempts has been reached
+        $query = "  SELECT *
+            FROM attempt 
+            WHERE studentID = '$StuID'
+            AND attemptNumber = ".MAX_QUIZ_ATTEMPTS;
+        $attemptresult = mysqli_query ($conn, $query);
+        
+        //save the result into $row
+        $row = mysqli_fetch_assoc($attemptresult);
+
+        if (mysqli_affected_rows($conn) == 1){
+            echo "<h1>Quiz Error!</h1>
+                <p>You have reached the Maximum number of attempts. Please contact us if this is an error.</p>";
+                include_once("footer.inc");
+                exit();
+        }
     }
-    echo "<h1>outside</h1>";
 ?>

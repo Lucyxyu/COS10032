@@ -105,10 +105,10 @@
             <label for="date">When was JavaScript first created?</label>
             <select id="date" name="creation-date" required>
                 <option value="">Select Your Answer</option>
-                <option value="angular">1997</option>
-                <option value="react">1995</option>
-                <option value="vue">1996</option>
-                <option value="svelte">1990</option>
+                <option value="1997">1997</option>
+                <option value="1995">1995</option>
+                <option value="1996">1996</option>
+                <option value="1990">1990</option>
             </select>
         </div>
         <br>

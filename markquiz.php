@@ -1,4 +1,38 @@
+<?php
 
+//functions used to mark question data
+function mark_question ($data, $answer) {
+    //q4 is array format hence check here if we are marking question 4
+    if (is_array($answer)) {
+        //initialise score
+        $marksReceived = 0;
+
+        //iterate through user answer and correct answer array, matching same values. Each correct answer +1 mark
+        for ($i = 0; $i < count($data); $i++){
+            for ($j = 0; $j < count($answer); $j++){
+                if ($data[$i] == $answer[$j]){
+                    $marksReceived++;
+                }
+            }
+        }
+        //return the marks obtained value
+        return $marksReceived;
+    }
+
+    if (is_string($answer)){
+        //change string to upper case for easier validation
+        $data = strtoupper($data);
+        $answer = strtoupper ($answer);
+
+        //return 1 mark if answers match, 0 if they don't
+        if ($data == $answer) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+}
+?>
 
 <!DOCTYPE html>
 
@@ -27,9 +61,21 @@
 
 <!-- BODY -->
     <?php
-
-    //use this script to validate input fields have all been completed
+    //use this script to validate input fields have all been completed and sanitise all the data
     require_once("validatequizinputs.php");
+
+    //MARK THE QUIZ
+    //first, define the correct answer for all questions
+    define("ANSWERONECORRECT", "ECMAScript");
+    define("ANSWERTWOCORRECT", "Brendan Eich");
+    define("ANSWERTHREECORRECT", "1995");
+    define("ANSWERFOURCORRECT", ["a", "d"]);
+
+    //call the marking function and add the score together, save in quizScore variable
+    $quizScore = mark_question($answerOne, ANSWERONECORRECT)
+                + mark_question($answerTwo, ANSWERTWOCORRECT)
+                + mark_question($answerThree, ANSWERTHREECORRECT)
+                + mark_question($answerFour, ANSWERFOURCORRECT);
 
     //connect to database *******MAKE SURE TO ADD YOUR OWN settings.php file**********
     require_once("settings.php");
@@ -58,7 +104,12 @@
 
 
 
-echo "<p>everything pass </p>";
+
+
+    //close the database connection
+    mysqli_close($conn);
+
+echo "<p>Databoase closed</p>";
 
     }
     ?>
