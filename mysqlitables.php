@@ -15,6 +15,9 @@
     if (!$result){
         echo "<h1>Database Error!</h1>
         <p>Database table creation failure. Please contact us.</p>";
+        include_once("footer.inc");      
+        //close the database connection
+        mysqli_close($conn);
         exit();
     } else {
         //insert values into STUDENT table
@@ -32,7 +35,9 @@
             //error message if boolean returns false
             echo "<h1>Database Error!</h1>
             <p>Database insertion failure. Please contact us.</p>";
-            include_once("footer.inc");
+            include_once("footer.inc");      
+            //close the database connection
+            mysqli_close($conn);
             exit();
         } else {
             //check if student number already exists (if affected rows is 1, means the insert was successful, if not then the student ID already exists)
@@ -94,6 +99,8 @@
         echo "<h1>Database Error!</h1>
         <p>Database table creation failure. Please contact us.</p>";
         include_once("footer.inc");
+        //close the database connection
+        mysqli_close($conn);
         exit();
     } else {
         //create constant to set max number of quiz attemps
@@ -113,7 +120,28 @@
             echo "<h1>Quiz Error!</h1>
                 <p>You have reached the Maximum number of attempts. Please contact us if this is an error.</p>";
                 include_once("footer.inc");
+                //close the database connection
+                mysqli_close($conn);
                 exit();
+        } else {
+            //check how many previous attempts student has had 
+            $query = "  SELECT attemptNumber
+                FROM attempt 
+                WHERE studentID = '$StuID'";
+            $attemptresult = mysqli_query ($conn, $query);
+            $row = mysqli_fetch_assoc($attemptresult);
+
+            //assign current attempt number based on query result
+            if ($row['attemptNumber'] == 1) {
+                $attemptNumber = 2;
+            } else {
+                $attemptNumber = 1;
+            }
+
+            $query = "  INSERT INTO attempt 
+                (attemptID, studentID, attemptDateTime, attemptNumber, attemptScore)
+                VALUES (NULL, '$StuID', NULL," .$attemptNumber. "," .$quizScore.")";
+            $attemptresult = mysqli_query ($conn, $query);
         }
     }
 ?>

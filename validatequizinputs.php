@@ -28,8 +28,10 @@ function sanitise_input ($data) {
             ) {
                 echo "<h1>Quiz submission error!</h1>
                     <p>Error: First name does not satisfy required format. Please try again at <a href=\"quiz.php\">quiz</a></p>";
-                    include_once("footer.inc");
-                exit();
+                    include_once("footer.inc");      
+                    //close the database connection
+                    mysqli_close($conn);
+                    exit();
             }
         } else {
             //prompt user to enter their first name if no input detected
@@ -56,14 +58,18 @@ function sanitise_input ($data) {
         ) {
             echo "<h1>Quiz submission error!</h1>
             <p>Error: Last name does not satisfy required format. Please try again at <a href=\"quiz.php\">quiz</a></p>";
-            include_once("footer.inc");
-             exit();
+            include_once("footer.inc");      
+            //close the database connection
+            mysqli_close($conn);
+            exit();
         }
     }
     else {
         echo "<p><h1>Quiz submission error!</h1>
         Error: Enter last name data in the <a href=\"quiz.php\">quiz</a></p>";
-        include_once("footer.inc");
+        include_once("footer.inc");      
+        //close the database connection
+        mysqli_close($conn);
         exit();
     }    
 
@@ -77,14 +83,18 @@ function sanitise_input ($data) {
         if (!(preg_match('/^\d{7,10}$/', $StuID))) {
             echo "<h1>Quiz submission error!</h1>
             <p>Error: Student ID does not satisfy required format. Please enter a 7 - 10 digit student number. <a href=\"quiz.php\">Try again.</a></p>";
-            include_once("footer.inc");
+            include_once("footer.inc");      
+            //close the database connection
+            mysqli_close($conn);
             exit();
         }
     }
     else {
         echo "<h1>Quiz submission error!</h1>
         <p>Error: Enter student ID in the <a href=\"quiz.php\">quiz</a></p>";
-        include_once("footer.inc");
+        include_once("footer.inc");      
+        //close the database connection
+        mysqli_close($conn);
         exit();
     }
     
@@ -98,14 +108,18 @@ function sanitise_input ($data) {
         if (!(preg_match('/^[A-Z]+$/', $answerOne))) {
             echo "<h1>Quiz submission error!</h1>
             <p>Error in Question 1. Please enter alphabet characters only. <a href=\"quiz.php\">Try again.</a></p>";
-            include_once("footer.inc");
+            include_once("footer.inc");      
+            //close the database connection
+            mysqli_close($conn);
             exit();
         }
     }
     else {
         echo "<h1>Quiz submission error!</h1>
         <p>Error: Please enter an answer for Question 1. <a href=\"quiz.php\">Try again.</a></p>";
-        include_once("footer.inc");
+        include_once("footer.inc");      
+        //close the database connection
+        mysqli_close($conn);
         exit();
     }
 
@@ -117,7 +131,9 @@ function sanitise_input ($data) {
     else {
         echo "<h1>Quiz submission error!</h1>
         <p>Error: Please enter an answer for Question 2. <a href=\"quiz.php\">Try again.</a></p>";
-        include_once("footer.inc");
+        include_once("footer.inc");      
+        //close the database connection
+        mysqli_close($conn);
         exit();
     }
     
@@ -129,7 +145,9 @@ function sanitise_input ($data) {
     else {
         echo "<h1>Quiz submission error!</h1>
         <p>Error: Please enter an answer for Question 3. <a href=\"quiz.php\">Try again.</a></p>";
-        include_once("footer.inc");
+        include_once("footer.inc");      
+        //close the database connection
+        mysqli_close($conn);
         exit();
     }
 
@@ -162,7 +180,9 @@ function sanitise_input ($data) {
     if (count($answerFour) == 0) {
         echo "<h1>Quiz submission error!</h1>
         <p>Error: Please select an answer(s) for Question 4. <a href=\"quiz.php\">Try again.</a></p>";
-        include_once("footer.inc");
+        include_once("footer.inc");      
+        //close the database connection
+        mysqli_close($conn);
         exit();
     }
 ?>

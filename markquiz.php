@@ -77,6 +77,11 @@ function mark_question ($data, $answer) {
                 + mark_question($answerThree, ANSWERTHREECORRECT)
                 + mark_question($answerFour, ANSWERFOURCORRECT);
 
+    //define the full marks
+    define("QUIZFULLSCORE", 5);
+
+    $percentageScore = $quizScore/QUIZFULLSCORE * 100;
+
     //connect to database *******MAKE SURE TO ADD YOUR OWN settings.php file**********
     require_once("settings.php");
     $conn = mysqli_connect (
@@ -90,31 +95,33 @@ function mark_question ($data, $answer) {
         //error message
         echo "<h1>Database Error!</h1>
         <p>Database connection failure. Please contact us.</p>";
+        include_once("footer.inc");
+        //close the database connection
+        mysqli_close($conn);
+        exit();
     } else {
 
         //create tables
         require_once("mysqlitables.php");
 
-    echo "<h1>Your Quiz results</h1>";
+    echo "<h1>Your Quiz results</h1>
 
+        <p>Student ID: $StuID<br>
+        Name: $fname $lname<br>
+        Attempt number: $attemptNumber</p>";
 
+        if ($attemptNumber == 1) {
+            echo "<p>To attempt the quiz again <a href=\"quiz.php\">Click here</a></p>";
+        }
 
-
-
-
-
-
-
+    echo "<p id='congratulationsMessage'>Congratulations! Your score is " .$percentageScore. "%</p>";
 
     //close the database connection
     mysqli_close($conn);
-
-echo "<p>Databoase closed</p>";
-
     }
-    ?>
+?>
 
-    <!-- FOOTER -->
+<!-- FOOTER -->
     <?php
         include_once("footer.inc");
     ?>
