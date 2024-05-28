@@ -35,7 +35,7 @@ function sanitise_input ($data) {
             }
         } else {
             //prompt user to enter their first name if no input detected
-            echo "Please<Quizh1> submission error!</h1>
+            echo "<h1>Quiz submission error!</h1>
             <p>Error:  enter first name in the <a href=\"quiz.php\">quiz</a></p>";
             include_once("footer.inc");
             exit();
@@ -66,7 +66,7 @@ function sanitise_input ($data) {
     }
     else {
         echo "<p><h1>Quiz submission error!</h1>
-        Error: Enter last name data in the <a href=\"quiz.php\">quiz</a></p>";
+        <p>Error: Enter last name data in the <a href=\"quiz.php\">quiz</a></p>";
         include_once("footer.inc");      
         //close the database connection
         mysqli_close($conn);
