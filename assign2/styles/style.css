@@ -119,6 +119,19 @@ header p {
     list-style: none;
 }
 
+#supervisor-item {
+    color: red;
+    font-weight: bold;
+}
+
+#supervisor-item:hover {
+    background-color: red;
+    border-radius: 1em;
+    /* allows for a gradual transition for the hover effect which is visually pleasant*/
+    transition-duration: 0.2s;
+    color: white;
+}
+
 #website-header li {
     display: inline;
 }
