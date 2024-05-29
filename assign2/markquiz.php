@@ -1,5 +1,4 @@
 <?php
-
 //functions used to mark question data
 function mark_question ($data, $answer) {
     //q4 is array format hence check here if we are marking question 4

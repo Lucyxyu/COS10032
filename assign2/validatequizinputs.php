@@ -192,5 +192,15 @@ function sanitise_input ($data) {
             //sanitise data with function
             $comment = $_POST["comment"];
             $comment = sanitise_input($comment);
+
+            //check if comment length is less than 300 characters (sql only allows maximum 482 characters)
+            if (strlen($comment) > 300){
+                echo "<h1>Quiz submission error!</h1>
+                <p>Error: Comment exceeds 300 characters. Please <a href=\"quiz.php\">try again.</a></p>";
+                include_once("footer.inc");      
+                //close the database connection
+                mysqli_close($conn);
+                exit();
+            }
         }
 ?>

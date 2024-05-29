@@ -1,4 +1,5 @@
 <?php
+
     //This php script creates the mysqli tables required - STUDENT and ATTEMPT. This is a one to many relationship
 
     //check if STUDENT table exists and create it if it doesn't
@@ -142,6 +143,84 @@
                 (attemptID, studentID, attemptDateTime, attemptNumber, attemptScore)
                 VALUES (NULL, '$StuID', NULL," .$attemptNumber. "," .$quizScore.")";
             $attemptresult = mysqli_query ($conn, $query);
+                
+            //check if table insertion was siccessful
+            if (!$attemptresult){
+                echo "<h1>Database Error!</h1>
+                <p>Database table creation failure. Please contact us.</p>";
+                include_once("footer.inc");
+                //close the database connection
+                mysqli_close($conn);
+                exit();
+            }
         }
     }
+
+    //COMMENT TABLE
+    //add a comment to the comment table if an optional comment has been input
+    if (isset ($comment) && !empty($comment)) {
+        //CREATE COMMENT TABLE
+        $query = "  CREATE TABLE IF NOT EXISTS feedback (
+            studentID VARCHAR(10),
+            attemptID INT,
+            comment VARCHAR(300),
+            PRIMARY KEY (studentID, attemptID),
+            FOREIGN KEY (studentID) REFERENCES student(studentID),
+            FOREIGN KEY (attemptID) REFERENCES attempt(attemptID)
+            )";
+    
+        //store the result in $result
+        $result = mysqli_query ($conn, $query);
+
+        //check if table exists or was created successfully
+        if (!$result){
+            echo "<h1>Database Error!</h1>
+            <p>Database table creation failure. Please contact us.</p>";
+            include_once("footer.inc");      
+            //close the database connection
+            mysqli_close($conn);
+            exit();
+        } else {
+        //find the attemptID number (as we need this for the comment table)
+            $query = "  SELECT attemptID 
+                FROM attempt
+                WHERE studentID = '$StuID'
+                AND attemptNumber = $attemptNumber";
+
+            $result = mysqli_query ($conn, $query);
+
+            //throw error if not successful
+            if (!$result){
+                echo "<h1>Database Error!</h1>
+                <p>Database table creation failure. Please contact us.</p>";
+                include_once("footer.inc");      
+                //close the database connection
+                mysqli_close($conn);
+                exit();
+            }
+
+            //save attempt ID number into variable
+            $row = mysqli_fetch_assoc($result);
+            $attemptID = $row['attemptID'];
+
+            //Insert comment into table
+            $query = "  INSERT INTO feedback VALUES (
+                '$StuID',
+                $attemptID,
+                '$comment'
+                )";
+            $result = mysqli_query ($conn, $query);
+
+            //throw error if not successful
+            if (!$result){
+                echo "<h1>Database Error!</h1>
+                <p>Database table creation failure. Please contact us.</p>";
+                include_once("footer.inc");      
+                //close the database connection
+                mysqli_close($conn);
+                exit();
+            }
+        }
+    }
+
 ?>

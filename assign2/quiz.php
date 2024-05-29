@@ -157,8 +157,8 @@
 
             <!-- Textarea for question 5 -->
             <label for="comment">5. (Optional question) Please provide some feedback on the website or quiz.</label><br>
-            <textarea id="comment" name="comment" placeholder="Enter.." rows="4" cols="40"
-                required></textarea><br><br>
+            <textarea id="comment" name="comment" placeholder="Enter comment here. 300 characters maximum..." rows="4" cols="40" maxlength="300"
+                ></textarea><br><br>
         </div>
 
         <!-- Submit button -->
