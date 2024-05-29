@@ -185,4 +185,12 @@ function sanitise_input ($data) {
         mysqli_close($conn);
         exit();
     }
+
+//QUESTION 5 (OPTIONAL QUESTION)
+        //check if a comment has been input
+        if (isset ($_POST["comment"]) && !empty($_POST["comment"])) {
+            //sanitise data with function
+            $comment = $_POST["comment"];
+            $comment = sanitise_input($comment);
+        }
 ?>

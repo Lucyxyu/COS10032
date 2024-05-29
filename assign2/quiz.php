@@ -156,8 +156,8 @@
         <div class="que_5">
 
             <!-- Textarea for question 5 -->
-            <label for="favorite_number">5. (Optional question) Please provide some feedback on the website or quiz.</label><br>
-            <textarea id="favorite_number" name="favorite_number" placeholder="Enter.." rows="4" cols="40"
+            <label for="comment">5. (Optional question) Please provide some feedback on the website or quiz.</label><br>
+            <textarea id="comment" name="comment" placeholder="Enter.." rows="4" cols="40"
                 required></textarea><br><br>
         </div>
 
