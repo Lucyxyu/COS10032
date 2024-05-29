@@ -111,10 +111,16 @@ function mark_question ($data, $answer) {
         Attempt number: $attemptNumber</p>";
 
         if ($attemptNumber == 1) {
-            echo "<p>To attempt the quiz again <a href=\"quiz.php\">Click here</a></p>";
+            echo "<p>To attempt the quiz again <a href=\"quiz.php\">click here</a>.</p>";
         }
 
-    echo "<p id='congratulationsMessage'>Congratulations! Your score is " .$percentageScore. "%</p>";
+        //message if quiz score was 0
+        if ($quizScore == 0) {
+            echo "<p id='congratulationsMessage'>You scored " .$quizScore. "%. Please reread the information again <a href='topic.php'>here.</a></p>";
+        } else {
+            echo "<p id='congratulationsMessage'>Congratulations! Your score is " .$percentageScore. "%</p>";
+        }
+    
 
     //close the database connection
     mysqli_close($conn);

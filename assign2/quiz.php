@@ -64,7 +64,7 @@
 
         <!-- Question 1 -->
         <div class="text_input">
-            <label for="text_input">What is the official name of JavaScript? </label>
+            <label for="text_input">1. What is the official name of JavaScript? </label>
             <input type="text" id="text_input" name="text_input" placeholder="Enter.." required><br>
         </div>
 
@@ -73,7 +73,7 @@
             <div class="image_2">
                 <img src="images/IMG_2.jpg" alt="Quiz page image 2">
             </div>
-            <p>Who is the inventor of JavaScript?</p>
+            <p>2. Who is the inventor of JavaScript?</p>
 
             <!-- Answer choices for question 2 -->
             <div class="ans">
@@ -102,7 +102,7 @@
         <!-- Question 3 -->
         <div class="que_3">
             <!-- Dropdown for question 3 -->
-            <label for="date">When was JavaScript first created?</label>
+            <label for="date">3. When was JavaScript first created?</label>
             <select id="date" name="creation-date" required>
                 <option value="">Select Your Answer</option>
                 <option value="1997">1997</option>
@@ -119,7 +119,7 @@
                 <img src="images/IMG_3.jpg" alt="Quiz page image 3">
             </div>
 
-            <p>What are some notable frameworks built with JavaScript?</p>
+            <p>4. What are some notable frameworks built with JavaScript?</p>
 
             <!-- Question 4 checkboxes -->
             <div class="checkbox-container">
@@ -156,7 +156,7 @@
         <div class="que_5">
 
             <!-- Textarea for question 5 -->
-            <label for="favorite_number">What is the difference between JavaScript and Java??</label><br>
+            <label for="favorite_number">5. (Optional question) Please provide some feedback on the website or quiz.</label><br>
             <textarea id="favorite_number" name="favorite_number" placeholder="Enter.." rows="4" cols="40"
                 required></textarea><br><br>
         </div>
