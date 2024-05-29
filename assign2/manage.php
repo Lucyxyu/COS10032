@@ -24,9 +24,67 @@
     ?>
 
     <!-- PAGE CONTENT -->
-    <article>
         <h1 class="page-title">Quiz supervisor page</h1>
-        <p>blah blah</p>
+        <p>This page is for the supervisor to moniter student learning.</p>
+
+<!-- List all attempts.
+• List all attempts for a particular student (given a student id OR name).
+
+GIVEN STUDENT ID
+SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name', attempt.attemptNumber AS 'Attempt Number', attempt.attemptScore AS 'Attempt Score'
+FROM student
+INNER JOIN attempt 
+ON student.studentID = attempt.studentID
+WHERE student.studentID = *************;
+
+GIVEN STUDENT FIRST AND LAST NAME
+SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name', attempt.attemptNumber AS 'Attempt Number', attempt.attemptScore AS 'Attempt Score'
+FROM student
+INNER JOIN attempt 
+ON student.studentID = attempt.studentID
+WHERE student.fname = *************
+AND student.lname = **********;
+
+
+• List all students (id, first and last name) who got 100% on their first attempt.
+
+SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name' 
+FROM student
+INNER JOIN attempt 
+ON student.studentID = attempt.studentID
+WHERE attempt.attemptNumber = 1
+AND attempt.attemptScore = 5;
+
+• List all students (id, first and last name) got less than 50% on their second attempt.
+
+SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name', attempt.attemptScore AS 'Attempt Score'
+FROM student
+INNER JOIN attempt 
+ON student.studentID = attempt.studentID
+WHERE attempt.attemptNumber = 2
+AND attempt.attemptScore < 5/2;
+
+• Delete all attempts for a particular student (given a student id).
+
+DELETE FROM attempt
+WHERE studentID = **********;
+
+Change the score for a quiz attempt (given a student id and attempt number). 
+
+UPDATE attempt
+SET attemptScore = *******
+WHERE studentID = ********
+AND attemptNumber = *******;
+
+• ENHANCEMENT - view feedback.
+
+SELECT studentID as 'StudentID', comment AS 'Student Feedback'
+FROM feedback;
+-->
+
+
+
+
 
     <!-- FOOTER -->
     <?php
@@ -34,7 +92,5 @@
     ?>
     
 </body>
-
-
 
 </html>
