@@ -54,7 +54,7 @@
                 $row = mysqli_fetch_assoc($nameresult);
 
                 //match first and last name to what the user has input
-                if (!(($row['fname'] == $fname) && ($row['lname'] == $lname))){
+                if (!((strtoupper($row['fname']) == strtoupper($fname)) && (strtoupper($row['lname']) == strtoupper($lname)))){
                     //if stuID and name do not match prompt user to check. Form has been used to pass the variables in hidden input types to updatedetails.php file
                     echo "<h1>Verification required</h1>
 
