@@ -22,13 +22,15 @@
     <?php
         include_once("header.inc");
     ?>
-
     <!-- PAGE CONTENT -->
+    <article>
         <h1 class="page-title">Quiz supervisor page</h1>
-        <p>This page is for the supervisor to moniter student learning.</p>
         <p>The following content is for the control of the Website Supervisor, if you are not an Authoritative member of that group please exit immediately, and contact support.</p>
         <p><strong>Related Pages: - manage.php - setting.php - mysqlitables.php - </strong></p>
-<!----------------------------------------------------------------------------------->
+
+<!--===================================================================================================-->  
+<!---TABLE 1. [ATTEMPTS]-->
+<!--===================================================================================================-->
     <?php
         require_once ("settings.php");//connection info
         $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
@@ -47,13 +49,13 @@
         This block checks if the connection to the database failed. 
         If it did, it prints an error message with the reason for the failure and exits the script.
         */
-
-    //---TABLE 1. [ATTEMPTS]
 //------------------------------------------------------------------------------------>     
     echo "<h2>1. All Attempts Logged</h2>"; 
-        $query = "SELECT studentID, attemptNumber, attemptID, attemptDateTime, attemptScore 
+        $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
                   FROM attempt 
-                  ORDER BY attemptNumber";
+                  INNER JOIN student
+                  ON student.studentID = attempt.studentID
+                  ORDER BY attempt.attemptNumber";
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         $result = mysqli_query($conn, $query);
         
@@ -61,16 +63,18 @@
         if ($result) 
         {
             echo "<table border='0'>";
-            echo "<tr><th>Student ID</th><th>Attempt Number</th><th>Attempt ID</th><th>Date & Time</th><th>Score</th></tr>";
+            echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Number</th><th>Score</th></tr>";
             // retreieve and display curren record pointed by the result pointer
             while ($row = mysqli_fetch_assoc($result)) 
             {
                 echo "<tr>";
                 echo "<td>{$row['studentID']}</td>"; //ID
-                echo "<td>{$row['attemptNumber']}</td>"; //Number of attempts Made
+                echo "<td>{$row['fname']}</td>";
+                echo "<td>{$row['lname']}</td>";
+                echo "<td>{$row['attemptDateTime']}</td>"; //Date and time of the event
                 //-------------------------------------
                 echo "<td>{$row['attemptID']}</td>"; //ID of the attempt
-                echo "<td>{$row['attemptDateTime']}</td>"; //Date and time of the event
+                echo "<td>{$row['attemptNumber']}</td>"; //Number of attempts Made
                 echo "<td>{$row['attemptScore']}</td>"; //Current Score
                 echo "</tr>";
             }
@@ -84,308 +88,351 @@
         // free up the memory, after using the result pointer
         mysqli_free_result($result);
         mysqli_close($conn);
+
+//===================================================================================================>
+//---TABLE 2. [LIST ATTEMPT PER PERSON] 
+//===================================================================================================>
 ?>
-        <p> <!--The delete Function-->
-            <input type="text" name= "Supervisor" id="std" pattern = "^\d{7,9}$" placeholder="Name OR Student ID"> <input type= "submit" value="Find">
-		    <label for="std"><h3>- Select A Student Record -</h3></label> 
-		</p>
+<h2>2. Select Per Student Attempt</h2>
+<form method="post" action="">
+    <p>
+        <input type="text" name="studentID_or_fname" id="std" pattern="^\d{7,9}$|^[a-zA-Z]+$" placeholder="Enter Student ID or Name">
+        <input type="submit" value="Find">
+        <input type="submit" name="reset" value="Reset Search">
+        <label for="std"><h3>- Select A Student Record -</h3></label>
+    </p>
+</form>
+
+<div id="results">
 <?php
-//=====================================================================================
-    require_once ("settings.php");//connection info
+        require_once("settings.php"); //connection info
         $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+
         if (!$conn) 
         {
-            echo "<p>Connection failed: " . mysqli_connect_error()."</p>";
+            echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
             exit();
         }
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['reset'])) 
+        {
+            $input = mysqli_real_escape_string($conn, $_POST['studentID_or_fname']);
+            $query = "";
+        if (is_numeric($input)) //If the search is by the Student Number
+        {
+            //For Numeric Inputs
+            $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                      FROM attempt 
+                      INNER JOIN student ON student.studentID = attempt.studentID
+                      WHERE student.studentID = '$input' 
+                      ORDER BY attempt.attemptNumber";
+        } 
+        else //If the search is by the Name
+        {
+            //For String Inputs
+            $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                      FROM attempt 
+                      INNER JOIN student ON student.studentID = attempt.studentID
+                      WHERE student.fname = '$input'
+                      ORDER BY attempt.attemptNumber";
+        }
 
-    //---TABLE 2. [LIST ATTEMPT PER PERSON] - \\JOIN attempts ON attemptID, attemptNumber, attemptScore\\
-//------------------------------------------------------------------------------------>
-        echo "<h2>2. Select Per Student Attempt</h2>"; 
-        $query = "SELECT studentID, fname, lname 
-                  FROM student 
-                  
-                  ORDER BY fname";
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         $result = mysqli_query($conn, $query);
-        
         if ($result) 
         {
-            echo "<table border='1'>";
-            echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th></tr>";
-            // retreieve and display curren record pointed by the result pointer
-            while ($row = mysqli_fetch_assoc($result)) 
-            {
+            echo "<table border='0'>";
+            echo "<tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Number</th><th>Attempt Score</th></tr>";
+            while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
                 echo "<td>{$row['studentID']}</td>";
-                echo "<td>{$row['fname']}</td>"; //First Name
-                echo "<td>{$row['lname']}</td>"; //First Name
+                echo "<td>{$row['fname']}</td>";
+                echo "<td>{$row['lname']}</td>";
+                echo "<td>{$row['attemptDateTime']}</td>";
+                echo "<td>{$row['attemptID']}</td>";
+                echo "<td>{$row['attemptNumber']}</td>";
+                echo "<td>{$row['attemptScore']}</td>";
                 echo "</tr>";
             }
             echo "</table>";
         } 
         else 
         {
-            echo "<p>omething is wrong with ", $query, "</p>";
-            echo "<p>Error: " . mysqli_error($conn). "</p>";
+            echo "<p>Something is wrong with the query: $query</p>";
+            echo "<p>Error: " . mysqli_error($conn) . "</p>";
         }
-        // free up the memory, after using the result pointer
         mysqli_free_result($result);
-        mysqli_close($conn); 
+    }
 
-//=====================================================================================
-    require_once ("settings.php");//connection info
-        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-        if (!$conn) 
-        {
-            echo "<p>Connection failed: " . mysqli_connect_error()."</p>";
-            exit();
-        }
-
-    //---TABLE 3. [ALL STUDENTS WITH 100% (1st Attempt)]
-//------------------------------------------------------------------------------------>
-        echo "<h2>3. 100% (First Attempt)</h2>"; 
-        $query = "SELECT studentID, fname, lname 
-                  FROM student 
-                  ORDER BY fname";
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    mysqli_close($conn);
     
-        $result = mysqli_query($conn, $query);
-        
-        if ($result) 
-        {
-            echo "<table border='0'>";
-            echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th></tr>";
-            // retreieve and display curren record pointed by the result pointer
-            while ($row = mysqli_fetch_assoc($result)) 
-            {
-                echo "<tr>";
-                echo "<td>{$row['studentID']}</td>";
-                echo "<td>{$row['fname']}</td>"; //First Name
-                echo "<td>{$row['lname']}</td>"; //First Name
-                echo "</tr>";
-            }
-            echo "</table>";
-        } 
-        else 
-        {
-            echo "<p>omething is wrong with ", $query, "</p>";
-            echo "<p>Error: " . mysqli_error($conn). "</p>";
-        }
-        // free up the memory, after using the result pointer
-        mysqli_free_result($result);
-        mysqli_close($conn); 
+//===================================================================================================>
+//---TABLE 3. [ALL STUDENTS WITH 100% (1st Attempt)]
+//===================================================================================================>
+    require_once("settings.php"); // connection info
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
-//=====================================================================================
-    require_once ("settings.php");//connection info
-        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-        if (!$conn) 
-        {
-            echo "<p>Connection failed: " . mysqli_connect_error()."</p>";
-            exit();
-        }
+    if (!$conn) {
+        echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
+        exit();
+    }
 
-    //---TABLE 4. [ALL STUDENTS LESS THAN 50% (1st Attempt)]
-//------------------------------------------------------------------------------------>
-    echo "<h2>4. Below 50% (First Attempt)</h2>";
-         $query = "SELECT studentID, attemptNumber, attemptID, attemptDateTime, attemptScore 
-                  FROM attempt 
-                  ORDER BY attemptNumber";
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        $result = mysqli_query($conn, $query);
-        
-        if ($result) 
-        {
-            echo "<table border='0'>";
-            echo "<tr><th>Student ID</th><th>Attempt Number</th><th>Attempt ID</th><th>Date & Time</th><th>Score</th></tr>";
-            // retreieve and display curren record pointed by the result pointer
-            while ($row = mysqli_fetch_assoc($result)) 
-            {
-                echo "<tr>";
-                echo "<td>{$row['studentID']}</td>"; //ID
-                echo "<td>{$row['attemptNumber']}</td>"; //Number of attempts Made
-                //-------------------------------------
-                echo "<td>{$row['attemptID']}</td>"; //ID of the attempt
-                echo "<td>{$row['attemptDateTime']}</td>"; //Date and time of the event
-                echo "<td>{$row['attemptScore']}</td>"; //Current Score
-                echo "</tr>";
-            }
-            echo "</table>";
-        } 
-        else 
-        {
-            echo "<p>omething is wrong with ", $query, "</p>";
-            echo "<p>Error: " . mysqli_error($conn). "</p>";
-        }
-        // free up the memory, after using the result pointer
-        mysqli_free_result($result);
-        mysqli_close($conn); 
+    echo "<h2>3. 100% (First Attempt)</h2>";
+    $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptScore 
+            FROM attempt 
+            INNER JOIN student ON student.studentID = attempt.studentID
+            WHERE attempt.attemptNumber = 1 AND attempt.attemptScore = 5 
+            ORDER BY student.studentID"; // Order by studentID
 
-    
-//=====================================================================================
-    require_once ("settings.php");//connection info
-        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-        if (!$conn) 
-        {
-            echo "<p>Connection failed: " . mysqli_connect_error()."</p>";
-            exit();
-        }
+    $result = mysqli_query($conn, $query);
 
-    //---TABLE 5. [DELETE ALL ATTEMPTS FOR A PERSON]
-//------------------------------------------------------------------------------------>
-    echo "<h2>5. Delete Attempts</h2>";
-         $query = "SELECT studentID
-                  FROM student 
-                  ORDER BY studentID";
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        $result = mysqli_query($conn, $query);
-        
-        if ($result) 
-        {
-            echo "<table border='0'>";
-            echo "<tr><th>Student ID</th><th>Status</th>";
-            // retreieve and display curren record pointed by the result pointer
-            while ($row = mysqli_fetch_assoc($result)) 
-            {
-                echo "<tr>";
-                echo "<td>{$row['studentID']}</td>"; //ID
-                echo "</tr>";
-            }
-            echo "</table>";
-        } 
-        else 
-        {
-            echo "<p>omething is wrong with ", $query, "</p>";
-            echo "<p>Error: " . mysqli_error($conn). "</p>";
+    if ($result) {
+        echo "<table border='0'>";
+        echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th><th>Attempt ID</th><th>Attempt Number</th><th>Score</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>{$row['studentID']}</td>"; // ID
+            echo "<td>{$row['fname']}</td>"; // First Name
+            echo "<td>{$row['lname']}</td>"; // Last Name
+            echo "<td>{$row['attemptID']}</td>"; // Attempt ID
+            echo "<td>{$row['attemptNumber']}</td>"; // Attempt Number
+            echo "<td>{$row['attemptScore']}</td>"; // Score
+            echo "</tr>";
         }
-        // free up the memory, after using the result pointer
-        mysqli_free_result($result);
-        mysqli_close($conn); 
-?>
-        <p> <!--The delete Function-->
-            <input type="text" name= "Supervisor" id="std" pattern = "^\d{7,9}$" placeholder="Score"> <input type= "submit" value="Delete">
-		    <label for="std"><h3>- Select An Attempt Record to DELETE -</h3></label> 
-		</p>
+        echo "</table>";
+    } else {
+        echo "<p>Something is wrong with ", $query, "</p>";
+        echo "<p>Error: " . mysqli_error($conn) . "</p>";
+    }
 
+    // Free up the memory, after using the result pointer
+    mysqli_free_result($result);
+    mysqli_close($conn);
+
+//===================================================================================================>
+//---TABLE 4. [ALL STUDENTS LESS THAN 50% (1st Attempt)]
+//===================================================================================================>
+    require_once("settings.php"); // connection info
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+
+    if (!$conn) {
+        echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
+        exit();
+    }
+
+    echo "<h2>4. Below 50% (Second Attempt)</h2>";
+    $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptScore 
+            FROM attempt 
+            INNER JOIN student ON student.studentID = attempt.studentID
+            WHERE attempt.attemptNumber = 2 AND attempt.attemptScore <= 2
+            ORDER BY student.studentID"; // Order by studentID
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        echo "<table border='0'>";
+        echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th><th>Attempt ID</th><th>Attempt Number</th><th>Score</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>{$row['studentID']}</td>"; // ID
+            echo "<td>{$row['fname']}</td>"; // First Name
+            echo "<td>{$row['lname']}</td>"; // Last Name
+            echo "<td>{$row['attemptID']}</td>"; // Attempt ID
+            echo "<td>{$row['attemptNumber']}</td>"; // Attempt Number
+            echo "<td>{$row['attemptScore']}</td>"; // Score
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p>Something is wrong with ", $query, "</p>";
+        echo "<p>Error: " . mysqli_error($conn) . "</p>";
+    }
+
+    // Free up the memory, after using the result pointer
+    mysqli_free_result($result);
+    mysqli_close($conn);
+
+//===================================================================================================>
+//---TABLE 5. [DELETE ALL ATTEMPTS FOR A PERSON]
+//===================================================================================================>
+?>  
+    <h2>5. Modify Attempt</h2>  
+    <form method="post" action="">
+        <p>
+            <input type="text" name="studentID_or_fname" id="MAA" pattern="^\d{7,9}$|^[a-zA-Z]+$" placeholder="Enter Student ID or Name">
+            <input type="submit" value="Find">
+            <input type="submit" name="reset" value="Reset Search">
+            <label for="std"><h3>- Select A Student Record -</h3></label>
+        </p>
+    </form>
+
+    <div id="results">
 <?php
-//=====================================================================================
-    require_once ("settings.php");//connection info
-        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-        if (!$conn) 
-        {
-            echo "<p>Connection failed: " . mysqli_connect_error()."</p>";
-            exit();
-        }
+    require_once("settings.php"); // connection info
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
-    //---TABLE 6. [MODIFY AN ATTEMPT]
-//------------------------------------------------------------------------------------>
-    echo "<h2>6. Modify Attempt Score</h2>";
-         $query = "SELECT studentID, attemptNumber, attemptScore 
-                  FROM attempt 
-                  ORDER BY attemptNumber";
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        $result = mysqli_query($conn, $query);
-        
-        if ($result) 
+    if (!$conn) 
+    {
+        echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
+        exit();
+    }
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    {
+        if (isset($_POST['reset'])) 
         {
-            echo "<table border='0'>";
-            echo "<tr><th>Student ID</th><th>Attempt Number</th><th>Score</th>";
-            // retreieve and display curren record pointed by the result pointer
-            while ($row = mysqli_fetch_assoc($result)) 
+            // Reset search logic (if any)
+        } 
+        elseif (isset($_POST['update_attempt'])) 
+        {
+            $attemptID = mysqli_real_escape_string($conn, $_POST['attemptID']);
+            $attemptScore = mysqli_real_escape_string($conn, $_POST['attemptScore']);
+            $update_query = "UPDATE attempt SET attemptScore = '$attemptScore' WHERE attemptID = '$attemptID'";
+            if (mysqli_query($conn, $update_query)) 
             {
-                echo "<tr>";
-                echo "<td>{$row['studentID']}</td>"; //ID
-                echo "<td>{$row['attemptNumber']}</td>"; //Number of attempts Made
-                echo "<td>{$row['attemptScore']}</td>"; //Current Score
-                echo "</tr>";
+                echo "<p>Attempt score updated successfully.</p>";
+            } 
+            else 
+            {
+                echo "<p>Error updating attempt score: " . mysqli_error($conn) . "</p>";
             }
-            echo "</table>";
         } 
         else 
         {
-            echo "<p>omething is wrong with ", $query, "</p>";
-            echo "<p>Error: " . mysqli_error($conn). "</p>";
+            $input = mysqli_real_escape_string($conn, $_POST['studentID_or_fname']);
+            $query = "";
+
+            if (is_numeric($input)) 
+            {
+                $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                          FROM attempt 
+                          INNER JOIN student ON student.studentID = attempt.studentID
+                          WHERE student.studentID = '$input' 
+                          ORDER BY attempt.attemptNumber";
+            } 
+            else 
+            {
+                $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                          FROM attempt 
+                          INNER JOIN student ON student.studentID = attempt.studentID
+                          WHERE student.fname = '$input'
+                          ORDER BY attempt.attemptNumber";
+            }
+
+            $result = mysqli_query($conn, $query);
+            if ($result) 
+            {
+                echo "<table border='0'>";
+                echo "<tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Number</th><th>Attempt Score</th><th>Edit</th></tr>";
+                while ($row = mysqli_fetch_assoc($result)) 
+                {
+                    echo "<tr>";
+                    echo "<td>{$row['studentID']}</td>";
+                    echo "<td>{$row['fname']}</td>";
+                    echo "<td>{$row['lname']}</td>";
+                    echo "<td>{$row['attemptDateTime']}</td>";
+                    echo "<td>{$row['attemptID']}</td>";
+                    echo "<td>{$row['attemptNumber']}</td>";
+                    echo "<td>{$row['attemptScore']}</td>";
+                    echo "<td>";
+                    echo "<form method='post' action=''>";
+                    echo "<input type='hidden' name='attemptID' value='{$row['attemptID']}'>";
+                    echo "<input type='number' name='attemptScore' value='{$row['attemptScore']}' required>";
+                    echo "<input type='submit' name='update_attempt' value='Update'>";
+                    echo "</form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } 
+            else 
+            {
+                echo "<p>Something is wrong with the query: $query</p>";
+                echo "<p>Error: " . mysqli_error($conn) . "</p>";
+            }
+            mysqli_free_result($result);
         }
-        // free up the memory, after using the result pointer
-        mysqli_free_result($result);
-        mysqli_close($conn); 
-    ?>
-        <!--Form for entering the student ID to delete.-->
-        <p>
-            <input type="text" name= "Supervisor" id="std" pattern = "^\d{7,9}$" placeholder="Enter A Student ID">
-            <label for="std"><h3>- Select A Student ID to MODIFY the Score Record -</h3></label> 
-		</p>
-        <p>
-            <input type="number" name= "Supervisor" id="std" pattern = "^\d{7,9}$" placeholder="Enter the NEW Score"> <input type= "submit" value="Change">
-            <label for="std"><h3>- Enter the NEW Score -</h3></label> 
-		</p>
-<!------------------------------------------------------------------------------------>
+    }
 
+    mysqli_close($conn);
 
-<!-- List all attempts.
-• List all attempts for a particular student (given a student id OR name).
+//===================================================================================================>
+//---TABLE 6. [MODIFY AN ATTEMPT]
+//===================================================================================================>
+?>
+</div>
 
-GIVEN STUDENT ID
-SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name', attempt.attemptNumber AS 'Attempt Number', attempt.attemptScore AS 'Attempt Score'
-FROM student
-INNER JOIN attempt 
-ON student.studentID = attempt.studentID
-WHERE student.studentID = *************;
+<h2>6. Modify Score</h2>
+<form method="post" action="">
+<p>
+    <input type="text" name="select_a_record" id="MAA" pattern="^\d{7,9}$|^[a-zA-Z]+$" placeholder="Enter Student ID or Name">
+    <input type="submit" value="Find">
+    <input type="submit" name="reset" value="Reset Search">
+    <label for="std"><h3>- Select A Student Record -</h3></label>
+</p>
+</form>
 
-GIVEN STUDENT FIRST AND LAST NAME
-SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name', attempt.attemptNumber AS 'Attempt Number', attempt.attemptScore AS 'Attempt Score'
-FROM student
-INNER JOIN attempt 
-ON student.studentID = attempt.studentID
-WHERE student.fname = *************
-AND student.lname = **********;
+<div id="results">
+<?php
+    require_once("settings.php"); //connection info
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
+    if (!$conn) 
+    {
+        echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
+        exit();
+    }
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['reset'])) 
+    {
+        $input = mysqli_real_escape_string($conn, $_POST['studentID_or_fname']);
+        $query = "";
+    if (is_numeric($input)) //If the search is by the Student Number
+    {
+        //For Numeric Inputs
+        $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                  FROM attempt 
+                  INNER JOIN student ON student.studentID = attempt.studentID
+                  WHERE student.studentID = '$input' 
+                  ORDER BY attempt.attemptNumber";
+    } 
+    else //If the search is by the Name
+    {
+        //For String Inputs
+        $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                  FROM attempt 
+                  INNER JOIN student ON student.studentID = attempt.studentID
+                  WHERE student.fname = '$input'
+                  ORDER BY attempt.attemptNumber";
+    }
 
-• List all students (id, first and last name) who got 100% on their first attempt.
+    $result = mysqli_query($conn, $query);
+    if ($result) 
+    {
+        echo "<table border='0'>";
+        echo "<tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Number</th><th>Attempt Score</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>{$row['studentID']}</td>";
+            echo "<td>{$row['fname']}</td>";
+            echo "<td>{$row['lname']}</td>";
+            echo "<td>{$row['attemptDateTime']}</td>";
+            echo "<td>{$row['attemptID']}</td>";
+            echo "<td>{$row['attemptNumber']}</td>";
+            echo "<td>{$row['attemptScore']}</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } 
+    else 
+    {
+        echo "<p>Something is wrong with the query: $query</p>";
+        echo "<p>Error: " . mysqli_error($conn) . "</p>";
+    }
+    mysqli_free_result($result);
+}
 
-SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name' 
-FROM student
-INNER JOIN attempt 
-ON student.studentID = attempt.studentID
-WHERE attempt.attemptNumber = 1
-AND attempt.attemptScore = 5;
-
-• List all students (id, first and last name) got less than 50% on their second attempt.
-
-SELECT student.studentID AS 'Student ID', student.fname AS 'First Name',student.lname AS 'Last Name', attempt.attemptScore AS 'Attempt Score'
-FROM student
-INNER JOIN attempt 
-ON student.studentID = attempt.studentID
-WHERE attempt.attemptNumber = 2
-AND attempt.attemptScore < 5/2;
-
-• Delete all attempts for a particular student (given a student id).
-
-DELETE FROM attempt
-WHERE studentID = **********;
-
-Change the score for a quiz attempt (given a student id and attempt number). 
-
-UPDATE attempt
-SET attemptScore = *******
-WHERE studentID = ********
-AND attemptNumber = *******;
-
-• ENHANCEMENT - view feedback.
-
-SELECT studentID as 'StudentID', comment AS 'Student Feedback'
-FROM feedback;
--->
-
-
-
-
-
-    <!-- FOOTER -->
-    <?php
-        include_once("footer.inc");
-    ?>
+mysqli_close($conn);
+?>
     
+
 </body>
 
 </html>
