@@ -253,8 +253,112 @@
 //===================================================================================================>
 //---TABLE 5. [DELETE ALL ATTEMPTS FOR A PERSON]
 //===================================================================================================>
-?>  
-    <h2>5. Modify Attempt</h2>  
+?>
+<h2>5. Modify Attempts</h2>  
+    <form method="post" action="">
+        <p>
+            <input type="text" name="studentID_or_fname" id="MAA" pattern="^\d{7,9}$|^[a-zA-Z]+$" placeholder="Enter Student ID or Name">
+            <input type="submit" value="Find">
+            <input type="submit" name="reset" value="Reset Search">
+            <label for="std"><h3>- Select A Student Record -</h3></label>
+        </p>
+    </form>
+
+    <div id="results">
+<?php
+    require_once("settings.php"); // connection info
+    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+
+    if (!$conn) 
+    {
+        echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
+        exit();
+    }
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    {
+        if (isset($_POST['reset'])) 
+        {
+            // Reset search logic (if any)
+        } 
+        elseif (isset($_POST['update_attempt'])) 
+        {
+            $attemptID = mysqli_real_escape_string($conn, $_POST['attemptID']);
+            $attemptScore = mysqli_real_escape_string($conn, $_POST['attemptScore']);
+            $update_query = "UPDATE attempt SET attemptNumber = '$attemptNumber' WHERE attemptID = '$attemptID'";
+            if (mysqli_query($conn, $update_query)) 
+            {
+                echo "<p>Attempt Number updated successfully.</p>";
+            } 
+            else 
+            {
+                echo "<p>Error updating attempt Number: " . mysqli_error($conn) . "</p>";
+            }
+        } 
+        else 
+        {
+            $input = mysqli_real_escape_string($conn, $_POST['studentID_or_fname']);
+            $query = "";
+
+            if (is_numeric($input)) 
+            {
+                $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                          FROM attempt 
+                          INNER JOIN student ON student.studentID = attempt.studentID
+                          WHERE student.studentID = '$input' 
+                          ORDER BY attempt.attemptNumber";
+            } 
+            else 
+            {
+                $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
+                          FROM attempt 
+                          INNER JOIN student ON student.studentID = attempt.studentID
+                          WHERE student.fname = '$input'
+                          ORDER BY attempt.attemptNumber";
+            }
+
+            $result = mysqli_query($conn, $query);
+            if ($result) 
+            {
+                echo "<table border='0'>";
+                echo "<tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Score</th><th>Attempt Number</th><th>Edit Attempt</th></tr>";
+                while ($row = mysqli_fetch_assoc($result)) 
+                {
+                    echo "<tr>";
+                    echo "<td>{$row['studentID']}</td>";
+                    echo "<td>{$row['fname']}</td>";
+                    echo "<td>{$row['lname']}</td>";
+                    echo "<td>{$row['attemptDateTime']}</td>";
+                    echo "<td>{$row['attemptID']}</td>";
+                    echo "<td>{$row['attemptScore']}</td>";
+                    echo "<td>{$row['attemptNumber']}</td>";
+                    echo "<td>";
+                    echo "<form method='post' action=''>";
+                    echo "<input type='hidden' name='attemptID' value='{$row['attemptID']}'>";
+                    echo "<input type='number' name='attemptNumber' value='{$row['attemptNumber']}' required>";
+                    echo "<input type='submit' name='update_score' value='Update'>";
+                    echo "</form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } 
+            else 
+            {
+                echo "<p>Something is wrong with the query: $query</p>";
+                echo "<p>Error: " . mysqli_error($conn) . "</p>";
+            }
+            mysqli_free_result($result);
+        }
+    }
+
+    mysqli_close($conn);
+
+//===================================================================================================>
+//---TABLE 6. [MODIFY AN ATTEMPT]
+//===================================================================================================>
+?>
+<h2>6. Modify Score</h2>  
     <form method="post" action="">
         <p>
             <input type="text" name="studentID_or_fname" id="MAA" pattern="^\d{7,9}$|^[a-zA-Z]+$" placeholder="Enter Student ID or Name">
@@ -321,7 +425,7 @@
             if ($result) 
             {
                 echo "<table border='0'>";
-                echo "<tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Number</th><th>Attempt Score</th><th>Edit</th></tr>";
+                echo "<tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Number</th><th>Attempt Score</th><th>Edit Score</th></tr>";
                 while ($row = mysqli_fetch_assoc($result)) 
                 {
                     echo "<tr>";
@@ -336,7 +440,7 @@
                     echo "<form method='post' action=''>";
                     echo "<input type='hidden' name='attemptID' value='{$row['attemptID']}'>";
                     echo "<input type='number' name='attemptScore' value='{$row['attemptScore']}' required>";
-                    echo "<input type='submit' name='update_attempt' value='Update'>";
+                    echo "<input type='submit' name='update_score' value='Update'>";
                     echo "</form>";
                     echo "</td>";
                     echo "</tr>";
@@ -353,86 +457,7 @@
     }
 
     mysqli_close($conn);
-
-//===================================================================================================>
-//---TABLE 6. [MODIFY AN ATTEMPT]
-//===================================================================================================>
 ?>
-</div>
-
-<h2>6. Modify Score</h2>
-<form method="post" action="">
-<p>
-    <input type="text" name="select_a_record" id="MAA" pattern="^\d{7,9}$|^[a-zA-Z]+$" placeholder="Enter Student ID or Name">
-    <input type="submit" value="Find">
-    <input type="submit" name="reset" value="Reset Search">
-    <label for="std"><h3>- Select A Student Record -</h3></label>
-</p>
-</form>
-
-<div id="results">
-<?php
-    require_once("settings.php"); //connection info
-    $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-
-    if (!$conn) 
-    {
-        echo "<p>Connection failed: " . mysqli_connect_error() . "</p>";
-        exit();
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST['reset'])) 
-    {
-        $input = mysqli_real_escape_string($conn, $_POST['studentID_or_fname']);
-        $query = "";
-    if (is_numeric($input)) //If the search is by the Student Number
-    {
-        //For Numeric Inputs
-        $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
-                  FROM attempt 
-                  INNER JOIN student ON student.studentID = attempt.studentID
-                  WHERE student.studentID = '$input' 
-                  ORDER BY attempt.attemptNumber";
-    } 
-    else //If the search is by the Name
-    {
-        //For String Inputs
-        $query = "SELECT student.studentID, student.fname, student.lname, attempt.attemptNumber, attempt.attemptID, attempt.attemptDateTime, attempt.attemptScore 
-                  FROM attempt 
-                  INNER JOIN student ON student.studentID = attempt.studentID
-                  WHERE student.fname = '$input'
-                  ORDER BY attempt.attemptNumber";
-    }
-
-    $result = mysqli_query($conn, $query);
-    if ($result) 
-    {
-        echo "<table border='0'>";
-        echo "<tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Date & Time</th><th>Attempt ID</th><th>Attempt Number</th><th>Attempt Score</th></tr>";
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td>{$row['studentID']}</td>";
-            echo "<td>{$row['fname']}</td>";
-            echo "<td>{$row['lname']}</td>";
-            echo "<td>{$row['attemptDateTime']}</td>";
-            echo "<td>{$row['attemptID']}</td>";
-            echo "<td>{$row['attemptNumber']}</td>";
-            echo "<td>{$row['attemptScore']}</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-    } 
-    else 
-    {
-        echo "<p>Something is wrong with the query: $query</p>";
-        echo "<p>Error: " . mysqli_error($conn) . "</p>";
-    }
-    mysqli_free_result($result);
-}
-
-mysqli_close($conn);
-?>
-    
-
 </body>
 
 </html>
