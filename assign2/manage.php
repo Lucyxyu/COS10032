@@ -118,7 +118,7 @@
         if ($result) 
         {
             echo "<table border='0'>";
-            echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th><th>Feedback</th><th>ID</th></tr>";
+            echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th><th>Feedback</th><th>Feedback</th></tr>";
             // retreieve and display curren record pointed by the result pointer
             while ($row = mysqli_fetch_assoc($result)) 
             {
@@ -441,7 +441,7 @@
                 $update_query = "UPDATE attempt SET attemptNumber = '$attemptNumber' WHERE attemptID = '$attemptID'";
                 if (mysqli_query($conn, $update_query)) 
                 {
-                    echo "<p>Attempt Number updated successfully.</p>";
+                    echo "<p>Score updated successfully.</p>";
                 } 
                 else 
                 {
