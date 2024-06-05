@@ -93,6 +93,53 @@
         // free up the memory, after using the result pointer
         mysqli_free_result($result);
         mysqli_close($conn);
+//===================================================================================================>
+//---TABLE 1. [FEEDBACK DISPLAY] 
+//===================================================================================================>
+        require_once ("settings.php");//connection info
+        $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+    
+        if (!$conn) 
+        {
+            echo "<p>Connection failed: " . mysqli_connect_error()."</p>";
+            exit();
+        }
+//------------------------------------------------------------------------------------>
+        echo "<h2>Feedback Log</h2>"; 
+        $query = "SELECT student.studentID, student.fname, student.lname, feedback.feedbackID, feedback.comment 
+                  FROM feedback
+                  INNER JOIN student
+                  ON student.studentID = feedback.studentID
+                  ORDER BY student.fname";
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        $result = mysqli_query($conn, $query);
+        
+        // if the execution is sucessful
+        if ($result) 
+        {
+            echo "<table border='0'>";
+            echo "<tr><th>Student ID</th><th>Name</th><th>Surname</th><th>Feedback</th><th>ID</th></tr>";
+            // retreieve and display curren record pointed by the result pointer
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+                echo "<tr>";
+                echo "<td>{$row['studentID']}</td>"; //ID
+                echo "<td>{$row['fname']}</td>";
+                echo "<td>{$row['lname']}</td>";
+                echo "<td>{$row['comment']}</td>";
+                echo "<td>{$row['feedbackID']}</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        } 
+        else 
+        {
+            echo "<p>omething is wrong with ", $query, "</p>";
+            echo "<p>Error: " . mysqli_error($conn). "</p>";
+        }
+        // free up the memory, after using the result pointer
+        mysqli_free_result($result);
+        mysqli_close($conn);
 
 //===================================================================================================>
 //---TABLE 2. [LIST ATTEMPT PER PERSON] 
